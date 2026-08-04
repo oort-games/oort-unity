@@ -1,0 +1,14 @@
+{
+    "name": "Oortgamestudio.Oortunity.Editor.Tests",
+    "references": [
+        "Oortgamestudio.Oortunity.Editor",
+        "Oortgamestudio.Oortunity"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": []
+}
