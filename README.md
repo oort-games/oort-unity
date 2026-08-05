@@ -83,6 +83,8 @@ com.oortgamestudio.oortunity/
 ├── Tests/
 ├── package.json
 ├── CHANGELOG.md
+├── LICENSE.md
+├── README.md
 └── Third Party Notices.md
 ```
 
