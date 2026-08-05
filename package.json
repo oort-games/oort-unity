@@ -8,6 +8,13 @@
   "dependencies": {
     "com.unity.test-framework": "1.6.0"
   },
+  "samples": [
+    {
+      "displayName": "Basic Sample",
+      "description": "Oort Unity 기본 사용 예제입니다.",
+      "path": "Samples~/Basic Sample"
+    }
+  ],
   "author": {
     "name": "Oort",
     "url": "http://www.example.com",
