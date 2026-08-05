@@ -1,0 +1,10 @@
+{
+    "name": "Oortgamestudio.Oortunity.Editor",
+    "references": [
+      "Oortgamestudio.Oortunity"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": []
+}
