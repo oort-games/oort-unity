@@ -43,7 +43,7 @@ You can also add Oort Unity directly to your project's `Packages/manifest.json`.
 ```json
 {
   "dependencies": {
-    "com.oortgamestudio.oortunity": "https://github.com/oort-games/oort-unity.git#v0.0.1"
+    "com.oortgames.oortunity": "https://github.com/oort-games/oort-unity.git#v0.0.1"
   }
 }
 ```
@@ -53,7 +53,7 @@ To use the latest version from the `main` branch, omit the version tag.
 ```json
 {
   "dependencies": {
-    "com.oortgamestudio.oortunity": "https://github.com/oort-games/oort-unity.git"
+    "com.oortgames.oortunity": "https://github.com/oort-games/oort-unity.git"
   }
 }
 ```
@@ -76,7 +76,7 @@ Assets/Samples/Oort Unity/<version>/
 ## Package Structure
 
 ```text
-com.oortgamestudio.oortunity/
+com.oortgames.oortunity/
 ├── Runtime/
 ├── Editor/
 ├── Samples~/
@@ -108,4 +108,4 @@ See [LICENSE](./LICENSE.md) for details.
 ## Author
 
 Oort Games  
-Contact: `oortgamestudio@gmail.com`
+Contact: `oortgames@gmail.com`
