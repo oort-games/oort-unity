@@ -5,7 +5,7 @@ public class SamepleCode : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("Sample 0.0.6");
+        Debug.Log("Sample 0.1.0");
     }
 
     // Update is called once per frame
