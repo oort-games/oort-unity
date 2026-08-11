@@ -1,0 +1,93 @@
+.oort-root {
+    background-color: rgb(38, 38, 38);
+}
+
+/* Header */
+
+.oort-header {
+    height: 58px;
+
+    padding-left: 16px;
+    padding-right: 16px;
+
+    background-color: rgb(48, 48, 48);
+
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(28, 28, 28);
+
+    flex-direction: row;
+    align-items: center;
+
+    margin-bottom: 8px;
+}
+
+.oort-header-icon {
+    width: 30px;
+    height: 30px;
+
+    margin-right: 10px;
+
+    flex-shrink: 0;
+}
+
+.oort-header-title {
+    font-size: 17px;
+
+    -unity-font-style: bold;
+
+    color: rgb(230, 230, 230);
+
+    flex-grow: 1;
+}
+
+/* Content */
+
+.oort-content {
+    flex-grow: 1;
+
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 12px;
+    padding-bottom: 16px;
+}
+
+
+/* Section */
+
+.oort-section {
+    margin-bottom: 14px;
+}
+
+
+/* Path */
+
+.oort-path-row {
+    flex-direction: row;
+    align-items: center;
+
+    margin-top: 4px;
+}
+
+.oort-path-field {
+    flex-grow: 1;
+
+    margin-right: 6px;
+}
+
+
+/* Button */
+
+.oort-small-button {
+    min-width: 70px;
+    height: 24px;
+
+    margin-left: 3px;
+}
+
+.oort-primary-button {
+    height: 34px;
+
+    margin-top: 8px;
+
+    -unity-font-style: bold;
+}
