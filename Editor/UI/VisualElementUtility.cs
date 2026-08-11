@@ -14,7 +14,7 @@ namespace OortUnity.Editor
             "Packages/com.oortgamestudio.oortunity/Editor/UI/Styles/OortStyles.uss";
 
         private const string DefaultIconPath =
-            "Packages/com.oortgamestudio.oortunity/Editor/UI/Icons/OortIcon.png";
+            "Packages/com.oortgamestudio.oortunity/Editor/UI/Icons/icon_oort.png";
 
         private const string RootClass = "oort-root";
 
