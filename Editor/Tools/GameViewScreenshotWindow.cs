@@ -20,9 +20,6 @@ namespace OortUnity.Editor
         private const string DefaultFileName = "GameView";
         private const string DefaultDirectoryName = "Screenshots";
 
-        private const string OutputDirectoryPrefsKey =
-            "OortUnity.GameViewScreenshot.OutputDirectory";
-
         private const string ContentClass = "oort-content";
         private const string SectionClass = "oort-section";
         private const string PathRowClass = "oort-path-row";
@@ -211,9 +208,12 @@ namespace OortUnity.Editor
         /// </summary>
         private void LoadOutputDirectory()
         {
-            _outputDirectory = EditorPrefs.GetString(
-                OutputDirectoryPrefsKey,
-                GetDefaultOutputDirectory());
+            string savedDirectory =
+                OortUnityUserSettings.instance.GameViewScreenshotOutputDirectory;
+
+            _outputDirectory = string.IsNullOrWhiteSpace(savedDirectory)
+                ? GetDefaultOutputDirectory()
+                : savedDirectory;
         }
 
         /// <summary>
@@ -224,9 +224,8 @@ namespace OortUnity.Editor
         {
             _outputDirectory = PathUtility.NormalizePath(directory);
 
-            EditorPrefs.SetString(
-                OutputDirectoryPrefsKey,
-                _outputDirectory);
+            OortUnityUserSettings.instance.GameViewScreenshotOutputDirectory =
+                _outputDirectory;
         }
 
         /// <summary>
@@ -234,12 +233,11 @@ namespace OortUnity.Editor
         /// </summary>
         private void ResetOutputDirectory()
         {
-            EditorPrefs.DeleteKey(OutputDirectoryPrefsKey);
+            OortUnityUserSettings.instance.GameViewScreenshotOutputDirectory =
+                string.Empty;
 
             _outputDirectory = GetDefaultOutputDirectory();
-
-            _outputDirectoryField?.SetValueWithoutNotify(
-                _outputDirectory);
+            _outputDirectoryField?.SetValueWithoutNotify(_outputDirectory);
         }
 
         /// <summary>
