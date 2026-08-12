@@ -4,7 +4,7 @@ Oort Unity is a Unity Package Manager (UPM) package that provides reusable runti
 
 ## Requirements
 
-- Unity `6000.3.10f1` or later
+- Unity `2022.3` or later
 - Git installed and available from the command line
 
 ## Installation
