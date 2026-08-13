@@ -80,6 +80,7 @@ com.oortgamestudio.oortunity/
 ├── Runtime/
 ├── Editor/
 ├── Samples~/
+├── Documentation~/
 ├── Tests/
 ├── package.json
 ├── CHANGELOG.md
@@ -91,6 +92,7 @@ com.oortgamestudio.oortunity/
 - `Runtime`: Runtime code included in player builds.
 - `Editor`: Unity Editor-only tools and extensions.
 - `Samples~`: Optional samples available through Package Manager.
+- `Documentation~`: Package documentation source files.
 - `Tests`: Package tests.
 
 ## Documentation
