@@ -22,7 +22,8 @@ namespace OortUnity.Editor
             get => _gameViewScreenshotOutputDirectory;
             set
             {
-                if (_gameViewScreenshotOutputDirectory == value) return;
+                if (_gameViewScreenshotOutputDirectory == value)
+                    return;
 
                 _gameViewScreenshotOutputDirectory = value;
                 Save(true);

@@ -8,9 +8,9 @@ namespace OortUnity.Utilities
         #region Directory
 
         /// <summary>
-        /// µð·ºÅä¸®°¡ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é »ý¼ºÇÕ´Ï´Ù.
+        /// ë””ë ‰í† ë¦¬ê°€ ì¡´ìž¬í•˜ì§€ ì•Šìœ¼ë©´ ìƒì„±í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="directoryPath">»ý¼ºÇÒ µð·ºÅä¸® °æ·ÎÀÔ´Ï´Ù.</param>
+        /// <param name="directoryPath">ìƒì„±í•  ë””ë ‰í† ë¦¬ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
         public static void CreateDirectory(string directoryPath)
         {
             if (string.IsNullOrEmpty(directoryPath))
@@ -22,10 +22,10 @@ namespace OortUnity.Utilities
         }
 
         /// <summary>
-        /// µð·ºÅä¸® »ý¼ºÀ» ½ÃµµÇÏ°í ¼º°ø ¿©ºÎ¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+        /// ë””ë ‰í† ë¦¬ ìƒì„±ì„ ì‹œë„í•˜ê³  ì„±ê³µ ì—¬ë¶€ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="directoryPath">»ý¼ºÇÒ µð·ºÅä¸® °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <returns>µð·ºÅä¸®°¡ Á¸ÀçÇÏ°Å³ª Á¤»óÀûÀ¸·Î »ý¼ºµÇ¾úÀ¸¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="directoryPath">ìƒì„±í•  ë””ë ‰í† ë¦¬ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <returns>ë””ë ‰í† ë¦¬ê°€ ì¡´ìž¬í•˜ê±°ë‚˜ ì •ìƒì ìœ¼ë¡œ ìƒì„±ë˜ì—ˆìœ¼ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static bool TryCreateDirectory(string directoryPath)
         {
             if (string.IsNullOrEmpty(directoryPath))
@@ -49,9 +49,9 @@ namespace OortUnity.Utilities
         }
 
         /// <summary>
-        /// ÆÄÀÏ °æ·ÎÀÇ »óÀ§ µð·ºÅä¸®°¡ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é »ý¼ºÇÕ´Ï´Ù.
+        /// íŒŒì¼ ê²½ë¡œì˜ ìƒìœ„ ë””ë ‰í† ë¦¬ê°€ ì¡´ìž¬í•˜ì§€ ì•Šìœ¼ë©´ ìƒì„±í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">»óÀ§ µð·ºÅä¸®¸¦ »ý¼ºÇÒ ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
+        /// <param name="filePath">ìƒìœ„ ë””ë ‰í† ë¦¬ë¥¼ ìƒì„±í•  íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
         public static void CreateParentDirectory(string filePath)
         {
             string directoryPath = Path.GetDirectoryName(filePath);
@@ -63,10 +63,10 @@ namespace OortUnity.Utilities
         }
 
         /// <summary>
-        /// ÆÄÀÏ °æ·ÎÀÇ »óÀ§ µð·ºÅä¸® »ý¼ºÀ» ½ÃµµÇÏ°í ¼º°ø ¿©ºÎ¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+        /// íŒŒì¼ ê²½ë¡œì˜ ìƒìœ„ ë””ë ‰í† ë¦¬ ìƒì„±ì„ ì‹œë„í•˜ê³  ì„±ê³µ ì—¬ë¶€ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">»óÀ§ µð·ºÅä¸®¸¦ »ý¼ºÇÒ ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <returns>»óÀ§ µð·ºÅä¸®°¡ ÇÊ¿äÇÏÁö ¾Ê°Å³ª Á¤»óÀûÀ¸·Î »ý¼ºµÇ¾úÀ¸¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="filePath">ìƒìœ„ ë””ë ‰í† ë¦¬ë¥¼ ìƒì„±í•  íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <returns>ìƒìœ„ ë””ë ‰í† ë¦¬ê°€ í•„ìš”í•˜ì§€ ì•Šê±°ë‚˜ ì •ìƒì ìœ¼ë¡œ ìƒì„±ë˜ì—ˆìœ¼ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static bool TryCreateParentDirectory(string filePath)
         {
             try
@@ -89,21 +89,21 @@ namespace OortUnity.Utilities
         #region Read
 
         /// <summary>
-        /// ÅØ½ºÆ® ÆÄÀÏÀÇ ¸ðµç ³»¿ëÀ» ÀÐ½À´Ï´Ù.
+        /// í…ìŠ¤íŠ¸ íŒŒì¼ì˜ ëª¨ë“  ë‚´ìš©ì„ ì½ìŠµë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">ÀÐÀ» ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <returns>ÆÄÀÏÀÇ ÀüÃ¼ ÅØ½ºÆ® ³»¿ëÀÔ´Ï´Ù.</returns>
+        /// <param name="filePath">ì½ì„ íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <returns>íŒŒì¼ì˜ ì „ì²´ í…ìŠ¤íŠ¸ ë‚´ìš©ìž…ë‹ˆë‹¤.</returns>
         public static string ReadAllText(string filePath)
         {
             return File.ReadAllText(filePath);
         }
 
         /// <summary>
-        /// ÅØ½ºÆ® ÆÄÀÏ ÀÐ±â¸¦ ½ÃµµÇÏ°í ¼º°ø ¿©ºÎ¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+        /// í…ìŠ¤íŠ¸ íŒŒì¼ ì½ê¸°ë¥¼ ì‹œë„í•˜ê³  ì„±ê³µ ì—¬ë¶€ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">ÀÐÀ» ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="contents">ÀÐ±â¿¡ ¼º°øÇÑ °æ¿ì ÆÄÀÏÀÇ ÀüÃ¼ ÅØ½ºÆ® ³»¿ëÀÔ´Ï´Ù.</param>
-        /// <returns>ÆÄÀÏÀ» Á¤»óÀûÀ¸·Î ÀÐ¾úÀ¸¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="filePath">ì½ì„ íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <param name="contents">ì½ê¸°ì— ì„±ê³µí•œ ê²½ìš° íŒŒì¼ì˜ ì „ì²´ í…ìŠ¤íŠ¸ ë‚´ìš©ìž…ë‹ˆë‹¤.</param>
+        /// <returns>íŒŒì¼ì„ ì •ìƒì ìœ¼ë¡œ ì½ì—ˆìœ¼ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static bool TryReadAllText(string filePath, out string contents)
         {
             try
@@ -124,21 +124,21 @@ namespace OortUnity.Utilities
         }
 
         /// <summary>
-        /// ¹ÙÀÌ³Ê¸® ÆÄÀÏÀÇ ¸ðµç ³»¿ëÀ» ÀÐ½À´Ï´Ù.
+        /// ë°”ì´ë„ˆë¦¬ íŒŒì¼ì˜ ëª¨ë“  ë‚´ìš©ì„ ì½ìŠµë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">ÀÐÀ» ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <returns>ÆÄÀÏÀÇ ÀüÃ¼ ¹ÙÀÌÆ® ¹è¿­ÀÔ´Ï´Ù.</returns>
+        /// <param name="filePath">ì½ì„ íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <returns>íŒŒì¼ì˜ ì „ì²´ ë°”ì´íŠ¸ ë°°ì—´ìž…ë‹ˆë‹¤.</returns>
         public static byte[] ReadAllBytes(string filePath)
         {
             return File.ReadAllBytes(filePath);
         }
 
         /// <summary>
-        /// ¹ÙÀÌ³Ê¸® ÆÄÀÏ ÀÐ±â¸¦ ½ÃµµÇÏ°í ¼º°ø ¿©ºÎ¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+        /// ë°”ì´ë„ˆë¦¬ íŒŒì¼ ì½ê¸°ë¥¼ ì‹œë„í•˜ê³  ì„±ê³µ ì—¬ë¶€ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">ÀÐÀ» ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="bytes">ÀÐ±â¿¡ ¼º°øÇÑ °æ¿ì ÆÄÀÏÀÇ ÀüÃ¼ ¹ÙÀÌÆ® ¹è¿­ÀÔ´Ï´Ù.</param>
-        /// <returns>ÆÄÀÏÀ» Á¤»óÀûÀ¸·Î ÀÐ¾úÀ¸¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="filePath">ì½ì„ íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <param name="bytes">ì½ê¸°ì— ì„±ê³µí•œ ê²½ìš° íŒŒì¼ì˜ ì „ì²´ ë°”ì´íŠ¸ ë°°ì—´ìž…ë‹ˆë‹¤.</param>
+        /// <returns>íŒŒì¼ì„ ì •ìƒì ìœ¼ë¡œ ì½ì—ˆìœ¼ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static bool TryReadAllBytes(string filePath, out byte[] bytes)
         {
             try
@@ -163,10 +163,10 @@ namespace OortUnity.Utilities
         #region Write
 
         /// <summary>
-        /// ÇÊ¿äÇÑ µð·ºÅä¸®¸¦ »ý¼ºÇÑ µÚ ÅØ½ºÆ® ÆÄÀÏÀ» ÀúÀåÇÕ´Ï´Ù.
+        /// í•„ìš”í•œ ë””ë ‰í† ë¦¬ë¥¼ ìƒì„±í•œ ë’¤ í…ìŠ¤íŠ¸ íŒŒì¼ì„ ì €ìž¥í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">ÀúÀåÇÒ ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="contents">ÆÄÀÏ¿¡ ÀúÀåÇÒ ÅØ½ºÆ® ³»¿ëÀÔ´Ï´Ù.</param>
+        /// <param name="filePath">ì €ìž¥í•  íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <param name="contents">íŒŒì¼ì— ì €ìž¥í•  í…ìŠ¤íŠ¸ ë‚´ìš©ìž…ë‹ˆë‹¤.</param>
         public static void WriteAllText(string filePath, string contents)
         {
             CreateParentDirectory(filePath);
@@ -174,11 +174,11 @@ namespace OortUnity.Utilities
         }
 
         /// <summary>
-        /// ÇÊ¿äÇÑ µð·ºÅä¸®¸¦ »ý¼ºÇÑ µÚ ÅØ½ºÆ® ÆÄÀÏ ÀúÀåÀ» ½ÃµµÇÏ°í ¼º°ø ¿©ºÎ¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+        /// í•„ìš”í•œ ë””ë ‰í† ë¦¬ë¥¼ ìƒì„±í•œ ë’¤ í…ìŠ¤íŠ¸ íŒŒì¼ ì €ìž¥ì„ ì‹œë„í•˜ê³  ì„±ê³µ ì—¬ë¶€ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">ÀúÀåÇÒ ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="contents">ÆÄÀÏ¿¡ ÀúÀåÇÒ ÅØ½ºÆ® ³»¿ëÀÔ´Ï´Ù.</param>
-        /// <returns>ÆÄÀÏÀ» Á¤»óÀûÀ¸·Î ÀúÀåÇßÀ¸¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="filePath">ì €ìž¥í•  íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <param name="contents">íŒŒì¼ì— ì €ìž¥í•  í…ìŠ¤íŠ¸ ë‚´ìš©ìž…ë‹ˆë‹¤.</param>
+        /// <returns>íŒŒì¼ì„ ì •ìƒì ìœ¼ë¡œ ì €ìž¥í–ˆìœ¼ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static bool TryWriteAllText(string filePath, string contents)
         {
             try
@@ -197,10 +197,10 @@ namespace OortUnity.Utilities
         }
 
         /// <summary>
-        /// ÇÊ¿äÇÑ µð·ºÅä¸®¸¦ »ý¼ºÇÑ µÚ ¹ÙÀÌ³Ê¸® ÆÄÀÏÀ» ÀúÀåÇÕ´Ï´Ù.
+        /// í•„ìš”í•œ ë””ë ‰í† ë¦¬ë¥¼ ìƒì„±í•œ ë’¤ ë°”ì´ë„ˆë¦¬ íŒŒì¼ì„ ì €ìž¥í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">ÀúÀåÇÒ ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="bytes">ÆÄÀÏ¿¡ ÀúÀåÇÒ ¹ÙÀÌÆ® ¹è¿­ÀÔ´Ï´Ù.</param>
+        /// <param name="filePath">ì €ìž¥í•  íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <param name="bytes">íŒŒì¼ì— ì €ìž¥í•  ë°”ì´íŠ¸ ë°°ì—´ìž…ë‹ˆë‹¤.</param>
         public static void WriteAllBytes(string filePath, byte[] bytes)
         {
             CreateParentDirectory(filePath);
@@ -208,11 +208,11 @@ namespace OortUnity.Utilities
         }
 
         /// <summary>
-        /// ÇÊ¿äÇÑ µð·ºÅä¸®¸¦ »ý¼ºÇÑ µÚ ¹ÙÀÌ³Ê¸® ÆÄÀÏ ÀúÀåÀ» ½ÃµµÇÏ°í ¼º°ø ¿©ºÎ¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+        /// í•„ìš”í•œ ë””ë ‰í† ë¦¬ë¥¼ ìƒì„±í•œ ë’¤ ë°”ì´ë„ˆë¦¬ íŒŒì¼ ì €ìž¥ì„ ì‹œë„í•˜ê³  ì„±ê³µ ì—¬ë¶€ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">ÀúÀåÇÒ ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="bytes">ÆÄÀÏ¿¡ ÀúÀåÇÒ ¹ÙÀÌÆ® ¹è¿­ÀÔ´Ï´Ù.</param>
-        /// <returns>ÆÄÀÏÀ» Á¤»óÀûÀ¸·Î ÀúÀåÇßÀ¸¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="filePath">ì €ìž¥í•  íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <param name="bytes">íŒŒì¼ì— ì €ìž¥í•  ë°”ì´íŠ¸ ë°°ì—´ìž…ë‹ˆë‹¤.</param>
+        /// <returns>íŒŒì¼ì„ ì •ìƒì ìœ¼ë¡œ ì €ìž¥í–ˆìœ¼ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static bool TryWriteAllBytes(string filePath, byte[] bytes)
         {
             try
@@ -231,10 +231,10 @@ namespace OortUnity.Utilities
         }
 
         /// <summary>
-        /// ÇÊ¿äÇÑ µð·ºÅä¸®¸¦ »ý¼ºÇÑ µÚ ÆÄÀÏ ³¡¿¡ ÅØ½ºÆ®¸¦ Ãß°¡ÇÕ´Ï´Ù.
+        /// í•„ìš”í•œ ë””ë ‰í† ë¦¬ë¥¼ ìƒì„±í•œ ë’¤ íŒŒì¼ ëì— í…ìŠ¤íŠ¸ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">ÅØ½ºÆ®¸¦ Ãß°¡ÇÒ ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="contents">ÆÄÀÏ ³¡¿¡ Ãß°¡ÇÒ ÅØ½ºÆ® ³»¿ëÀÔ´Ï´Ù.</param>
+        /// <param name="filePath">í…ìŠ¤íŠ¸ë¥¼ ì¶”ê°€í•  íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <param name="contents">íŒŒì¼ ëì— ì¶”ê°€í•  í…ìŠ¤íŠ¸ ë‚´ìš©ìž…ë‹ˆë‹¤.</param>
         public static void AppendAllText(string filePath, string contents)
         {
             CreateParentDirectory(filePath);
@@ -242,11 +242,11 @@ namespace OortUnity.Utilities
         }
 
         /// <summary>
-        /// ÇÊ¿äÇÑ µð·ºÅä¸®¸¦ »ý¼ºÇÑ µÚ ÆÄÀÏ ³¡¿¡ ÅØ½ºÆ® Ãß°¡¸¦ ½ÃµµÇÏ°í ¼º°ø ¿©ºÎ¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+        /// í•„ìš”í•œ ë””ë ‰í† ë¦¬ë¥¼ ìƒì„±í•œ ë’¤ íŒŒì¼ ëì— í…ìŠ¤íŠ¸ ì¶”ê°€ë¥¼ ì‹œë„í•˜ê³  ì„±ê³µ ì—¬ë¶€ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">ÅØ½ºÆ®¸¦ Ãß°¡ÇÒ ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="contents">ÆÄÀÏ ³¡¿¡ Ãß°¡ÇÒ ÅØ½ºÆ® ³»¿ëÀÔ´Ï´Ù.</param>
-        /// <returns>ÅØ½ºÆ®¸¦ Á¤»óÀûÀ¸·Î Ãß°¡ÇßÀ¸¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="filePath">í…ìŠ¤íŠ¸ë¥¼ ì¶”ê°€í•  íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <param name="contents">íŒŒì¼ ëì— ì¶”ê°€í•  í…ìŠ¤íŠ¸ ë‚´ìš©ìž…ë‹ˆë‹¤.</param>
+        /// <returns>í…ìŠ¤íŠ¸ë¥¼ ì •ìƒì ìœ¼ë¡œ ì¶”ê°€í–ˆìœ¼ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static bool TryAppendAllText(string filePath, string contents)
         {
             try
@@ -269,31 +269,25 @@ namespace OortUnity.Utilities
         #region Copy
 
         /// <summary>
-        /// ÇÊ¿äÇÑ µð·ºÅä¸®¸¦ »ý¼ºÇÑ µÚ ÆÄÀÏÀ» º¹»çÇÕ´Ï´Ù.
+        /// í•„ìš”í•œ ë””ë ‰í† ë¦¬ë¥¼ ìƒì„±í•œ ë’¤ íŒŒì¼ì„ ë³µì‚¬í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="sourceFilePath">º¹»çÇÒ ¿øº» ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="destinationFilePath">º¹»çÇÒ ´ë»ó ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="overwrite">´ë»ó ÆÄÀÏÀÌ ÀÌ¹Ì Á¸ÀçÇÒ °æ¿ì µ¤¾î¾µÁö ¿©ºÎÀÔ´Ï´Ù.</param>
-        public static void Copy(
-            string sourceFilePath,
-            string destinationFilePath,
-            bool overwrite = false)
+        /// <param name="sourceFilePath">ë³µì‚¬í•  ì›ë³¸ íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <param name="destinationFilePath">ë³µì‚¬í•  ëŒ€ìƒ íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <param name="overwrite">ëŒ€ìƒ íŒŒì¼ì´ ì´ë¯¸ ì¡´ìž¬í•  ê²½ìš° ë®ì–´ì“¸ì§€ ì—¬ë¶€ìž…ë‹ˆë‹¤.</param>
+        public static void Copy(string sourceFilePath, string destinationFilePath, bool overwrite = false)
         {
             CreateParentDirectory(destinationFilePath);
             File.Copy(sourceFilePath, destinationFilePath, overwrite);
         }
 
         /// <summary>
-        /// ÆÄÀÏ º¹»ç¸¦ ½ÃµµÇÏ°í ¼º°ø ¿©ºÎ¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+        /// íŒŒì¼ ë³µì‚¬ë¥¼ ì‹œë„í•˜ê³  ì„±ê³µ ì—¬ë¶€ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="sourceFilePath">º¹»çÇÒ ¿øº» ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="destinationFilePath">º¹»çÇÒ ´ë»ó ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="overwrite">´ë»ó ÆÄÀÏÀÌ ÀÌ¹Ì Á¸ÀçÇÒ °æ¿ì µ¤¾î¾µÁö ¿©ºÎÀÔ´Ï´Ù.</param>
-        /// <returns>ÆÄÀÏÀ» Á¤»óÀûÀ¸·Î º¹»çÇßÀ¸¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.</returns>
-        public static bool TryCopy(
-            string sourceFilePath,
-            string destinationFilePath,
-            bool overwrite = false)
+        /// <param name="sourceFilePath">ë³µì‚¬í•  ì›ë³¸ íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <param name="destinationFilePath">ë³µì‚¬í•  ëŒ€ìƒ íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <param name="overwrite">ëŒ€ìƒ íŒŒì¼ì´ ì´ë¯¸ ì¡´ìž¬í•  ê²½ìš° ë®ì–´ì“¸ì§€ ì—¬ë¶€ìž…ë‹ˆë‹¤.</param>
+        /// <returns>íŒŒì¼ì„ ì •ìƒì ìœ¼ë¡œ ë³µì‚¬í–ˆìœ¼ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
+        public static bool TryCopy(string sourceFilePath, string destinationFilePath, bool overwrite = false)
         {
             try
             {
@@ -315,10 +309,10 @@ namespace OortUnity.Utilities
         #region Move
 
         /// <summary>
-        /// ÇÊ¿äÇÑ µð·ºÅä¸®¸¦ »ý¼ºÇÑ µÚ ÆÄÀÏÀ» ÀÌµ¿ÇÕ´Ï´Ù.
+        /// í•„ìš”í•œ ë””ë ‰í† ë¦¬ë¥¼ ìƒì„±í•œ ë’¤ íŒŒì¼ì„ ì´ë™í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="sourceFilePath">ÀÌµ¿ÇÒ ¿øº» ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="destinationFilePath">ÀÌµ¿ÇÒ ´ë»ó ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
+        /// <param name="sourceFilePath">ì´ë™í•  ì›ë³¸ íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <param name="destinationFilePath">ì´ë™í•  ëŒ€ìƒ íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
         public static void Move(string sourceFilePath, string destinationFilePath)
         {
             CreateParentDirectory(destinationFilePath);
@@ -326,11 +320,11 @@ namespace OortUnity.Utilities
         }
 
         /// <summary>
-        /// ÆÄÀÏ ÀÌµ¿À» ½ÃµµÇÏ°í ¼º°ø ¿©ºÎ¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+        /// íŒŒì¼ ì´ë™ì„ ì‹œë„í•˜ê³  ì„±ê³µ ì—¬ë¶€ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="sourceFilePath">ÀÌµ¿ÇÒ ¿øº» ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="destinationFilePath">ÀÌµ¿ÇÒ ´ë»ó ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <returns>ÆÄÀÏÀ» Á¤»óÀûÀ¸·Î ÀÌµ¿ÇßÀ¸¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="sourceFilePath">ì´ë™í•  ì›ë³¸ íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <param name="destinationFilePath">ì´ë™í•  ëŒ€ìƒ íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <returns>íŒŒì¼ì„ ì •ìƒì ìœ¼ë¡œ ì´ë™í–ˆìœ¼ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static bool TryMove(string sourceFilePath, string destinationFilePath)
         {
             try
@@ -353,19 +347,19 @@ namespace OortUnity.Utilities
         #region Delete
 
         /// <summary>
-        /// ÆÄÀÏÀ» »èÁ¦ÇÕ´Ï´Ù.
+        /// íŒŒì¼ì„ ì‚­ì œí•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">»èÁ¦ÇÒ ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
+        /// <param name="filePath">ì‚­ì œí•  íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
         public static void Delete(string filePath)
         {
             File.Delete(filePath);
         }
 
         /// <summary>
-        /// ÆÄÀÏÀÌ Á¸ÀçÇÏ¸é »èÁ¦¸¦ ½ÃµµÇÏ°í ¼º°ø ¿©ºÎ¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+        /// íŒŒì¼ì´ ì¡´ìž¬í•˜ë©´ ì‚­ì œë¥¼ ì‹œë„í•˜ê³  ì„±ê³µ ì—¬ë¶€ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">»èÁ¦ÇÒ ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <returns>ÆÄÀÏÀ» Á¤»óÀûÀ¸·Î »èÁ¦ÇßÀ¸¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="filePath">ì‚­ì œí•  íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <returns>íŒŒì¼ì„ ì •ìƒì ìœ¼ë¡œ ì‚­ì œí–ˆìœ¼ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static bool TryDelete(string filePath)
         {
             if (!File.Exists(filePath))
@@ -393,31 +387,31 @@ namespace OortUnity.Utilities
         #region Info
 
         /// <summary>
-        /// ÆÄÀÏÀÇ Á¸Àç ¿©ºÎ¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+        /// íŒŒì¼ì˜ ì¡´ìž¬ ì—¬ë¶€ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">È®ÀÎÇÒ ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <returns>ÆÄÀÏÀÌ Á¸ÀçÇÏ¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="filePath">í™•ì¸í•  íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <returns>íŒŒì¼ì´ ì¡´ìž¬í•˜ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static bool Exists(string filePath)
         {
             return File.Exists(filePath);
         }
 
         /// <summary>
-        /// ÆÄÀÏ Å©±â¸¦ ¹ÙÀÌÆ® ´ÜÀ§·Î ¹ÝÈ¯ÇÕ´Ï´Ù.
+        /// íŒŒì¼ í¬ê¸°ë¥¼ ë°”ì´íŠ¸ ë‹¨ìœ„ë¡œ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">Å©±â¸¦ È®ÀÎÇÒ ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <returns>ÆÄÀÏ Å©±â¸¦ ¹ÙÀÌÆ® ´ÜÀ§·Î ¹ÝÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="filePath">í¬ê¸°ë¥¼ í™•ì¸í•  íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <returns>íŒŒì¼ í¬ê¸°ë¥¼ ë°”ì´íŠ¸ ë‹¨ìœ„ë¡œ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static long GetSize(string filePath)
         {
             return new FileInfo(filePath).Length;
         }
 
         /// <summary>
-        /// ÆÄÀÏ Å©±â Á¶È¸¸¦ ½ÃµµÇÏ°í ¼º°ø ¿©ºÎ¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+        /// íŒŒì¼ í¬ê¸° ì¡°íšŒë¥¼ ì‹œë„í•˜ê³  ì„±ê³µ ì—¬ë¶€ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">Å©±â¸¦ È®ÀÎÇÒ ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="size">Á¶È¸¿¡ ¼º°øÇÑ °æ¿ì ÆÄÀÏ Å©±â¸¦ ¹ÙÀÌÆ® ´ÜÀ§·Î ¹ÝÈ¯ÇÕ´Ï´Ù.</param>
-        /// <returns>ÆÄÀÏ Å©±â¸¦ Á¤»óÀûÀ¸·Î Á¶È¸ÇßÀ¸¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="filePath">í¬ê¸°ë¥¼ í™•ì¸í•  íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <param name="size">ì¡°íšŒì— ì„±ê³µí•œ ê²½ìš° íŒŒì¼ í¬ê¸°ë¥¼ ë°”ì´íŠ¸ ë‹¨ìœ„ë¡œ ë°˜í™˜í•©ë‹ˆë‹¤.</param>
+        /// <returns>íŒŒì¼ í¬ê¸°ë¥¼ ì •ìƒì ìœ¼ë¡œ ì¡°íšŒí–ˆìœ¼ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static bool TryGetSize(string filePath, out long size)
         {
             try
@@ -438,24 +432,22 @@ namespace OortUnity.Utilities
         }
 
         /// <summary>
-        /// ÆÄÀÏÀÇ ¸¶Áö¸· ¼öÁ¤ ½Ã°£À» UTC ±âÁØÀ¸·Î ¹ÝÈ¯ÇÕ´Ï´Ù.
+        /// íŒŒì¼ì˜ ë§ˆì§€ë§‰ ìˆ˜ì • ì‹œê°„ì„ UTC ê¸°ì¤€ìœ¼ë¡œ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">¸¶Áö¸· ¼öÁ¤ ½Ã°£À» È®ÀÎÇÒ ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <returns>ÆÄÀÏÀÇ ¸¶Áö¸· ¼öÁ¤ ½Ã°£À» UTC ±âÁØÀ¸·Î ¹ÝÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="filePath">ë§ˆì§€ë§‰ ìˆ˜ì • ì‹œê°„ì„ í™•ì¸í•  íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <returns>íŒŒì¼ì˜ ë§ˆì§€ë§‰ ìˆ˜ì • ì‹œê°„ì„ UTC ê¸°ì¤€ìœ¼ë¡œ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static DateTime GetLastWriteTimeUtc(string filePath)
         {
             return File.GetLastWriteTimeUtc(filePath);
         }
 
         /// <summary>
-        /// ÆÄÀÏÀÇ ¸¶Áö¸· ¼öÁ¤ ½Ã°£ Á¶È¸¸¦ ½ÃµµÇÏ°í ¼º°ø ¿©ºÎ¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+        /// íŒŒì¼ì˜ ë§ˆì§€ë§‰ ìˆ˜ì • ì‹œê°„ ì¡°íšŒë¥¼ ì‹œë„í•˜ê³  ì„±ê³µ ì—¬ë¶€ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="filePath">¸¶Áö¸· ¼öÁ¤ ½Ã°£À» È®ÀÎÇÒ ÆÄÀÏ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="lastWriteTimeUtc">Á¶È¸¿¡ ¼º°øÇÑ °æ¿ì ÆÄÀÏÀÇ ¸¶Áö¸· ¼öÁ¤ ½Ã°£À» UTC ±âÁØÀ¸·Î ¹ÝÈ¯ÇÕ´Ï´Ù.</param>
-        /// <returns>¸¶Áö¸· ¼öÁ¤ ½Ã°£À» Á¤»óÀûÀ¸·Î Á¶È¸ÇßÀ¸¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.</returns>
-        public static bool TryGetLastWriteTimeUtc(
-            string filePath,
-            out DateTime lastWriteTimeUtc)
+        /// <param name="filePath">ë§ˆì§€ë§‰ ìˆ˜ì • ì‹œê°„ì„ í™•ì¸í•  íŒŒì¼ ê²½ë¡œìž…ë‹ˆë‹¤.</param>
+        /// <param name="lastWriteTimeUtc">ì¡°íšŒì— ì„±ê³µí•œ ê²½ìš° íŒŒì¼ì˜ ë§ˆì§€ë§‰ ìˆ˜ì • ì‹œê°„ì„ UTC ê¸°ì¤€ìœ¼ë¡œ ë°˜í™˜í•©ë‹ˆë‹¤.</param>
+        /// <returns>ë§ˆì§€ë§‰ ìˆ˜ì • ì‹œê°„ì„ ì •ìƒì ìœ¼ë¡œ ì¡°íšŒí–ˆìœ¼ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
+        public static bool TryGetLastWriteTimeUtc(string filePath, out DateTime lastWriteTimeUtc)
         {
             if (!File.Exists(filePath))
             {

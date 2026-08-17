@@ -4,7 +4,6 @@
     background-color: rgb(38, 38, 38);
 }
 
-
 /* Header */
 
 .oort-header {
@@ -38,7 +37,6 @@
     color: rgb(230, 230, 230);
 }
 
-
 /* Content */
 
 .oort-content {
@@ -50,13 +48,11 @@
     padding-bottom: 16px;
 }
 
-
 /* Section */
 
 .oort-section {
     margin-bottom: 14px;
 }
-
 
 /* Path */
 
@@ -73,7 +69,6 @@
     margin-right: 6px;
 }
 
-
 /* Button */
 
 .oort-small-button {
@@ -88,7 +83,6 @@
 
     -unity-font-style: bold;
 }
-
 
 /* PlayerPrefs */
 
@@ -115,6 +109,26 @@
 
     border-bottom-width: 1px;
     border-bottom-color: rgb(70, 70, 70);
+}
+
+.oort-prefs-sort-button {
+    margin-left: 0;
+    margin-right: 0;
+
+    background-color: rgba(0, 0, 0, 0);
+
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+
+    -unity-text-align: middle-left;
+}
+
+.oort-prefs-sort-button:hover,
+.oort-prefs-sort-button:active,
+.oort-prefs-sort-button:focus {
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .oort-prefs-row {

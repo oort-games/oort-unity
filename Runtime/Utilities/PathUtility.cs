@@ -9,11 +9,11 @@ namespace OortUnity.Utilities
         #region File Name
 
         /// <summary>
-        /// ÆÄÀÏ¸íÀ¸·Î »ç¿ëÇÒ ¼ö ¾ø´Â ¹®ÀÚ¸¦ ÁöÁ¤µÈ ¹®ÀÚ·Î ´ëÃ¼ÇÕ´Ï´Ù.
+        /// íŒŒì¼ëª…ìœ¼ë¡œ ì‚¬ìš©í•  ìˆ˜ ì—†ëŠ” ë¬¸ìë¥¼ ì§€ì •ëœ ë¬¸ìë¡œ ëŒ€ì²´í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="fileName">Á¤¸®ÇÒ ÆÄÀÏ¸íÀÔ´Ï´Ù.</param>
-        /// <param name="replacement">»ç¿ëÇÒ ¼ö ¾ø´Â ¹®ÀÚ¸¦ ´ëÃ¼ÇÒ ¹®ÀÚÀÔ´Ï´Ù.</param>
-        /// <returns>»ç¿ëÇÒ ¼ö ¾ø´Â ¹®ÀÚ°¡ ´ëÃ¼µÈ ÆÄÀÏ¸íÀ» ¹İÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="fileName">ì •ë¦¬í•  íŒŒì¼ëª…ì…ë‹ˆë‹¤.</param>
+        /// <param name="replacement">ì‚¬ìš©í•  ìˆ˜ ì—†ëŠ” ë¬¸ìë¥¼ ëŒ€ì²´í•  ë¬¸ìì…ë‹ˆë‹¤.</param>
+        /// <returns>ì‚¬ìš©í•  ìˆ˜ ì—†ëŠ” ë¬¸ìê°€ ëŒ€ì²´ëœ íŒŒì¼ëª…ì„ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static string SanitizeFileName(string fileName, char replacement = '_')
         {
             if (string.IsNullOrEmpty(fileName))
@@ -30,10 +30,10 @@ namespace OortUnity.Utilities
         }
 
         /// <summary>
-        /// È®ÀåÀÚ°¡ Á¡(.)À¸·Î ½ÃÀÛÇÏµµ·Ï Á¤±ÔÈ­ÇÕ´Ï´Ù.
+        /// í™•ì¥ìê°€ ì (.)ìœ¼ë¡œ ì‹œì‘í•˜ë„ë¡ ì •ê·œí™”í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="extension">Á¤±ÔÈ­ÇÒ È®ÀåÀÚÀÔ´Ï´Ù.</param>
-        /// <returns>Á¡(.)À¸·Î ½ÃÀÛÇÏ´Â È®ÀåÀÚ¸¦ ¹İÈ¯ÇÕ´Ï´Ù. °ªÀÌ ¾øÀ¸¸é ºó ¹®ÀÚ¿­À» ¹İÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="extension">ì •ê·œí™”í•  í™•ì¥ìì…ë‹ˆë‹¤.</param>
+        /// <returns>ì (.)ìœ¼ë¡œ ì‹œì‘í•˜ëŠ” í™•ì¥ìë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤. ê°’ì´ ì—†ìœ¼ë©´ ë¹ˆ ë¬¸ìì—´ì„ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static string NormalizeExtension(string extension)
         {
             if (string.IsNullOrEmpty(extension))
@@ -41,9 +41,7 @@ namespace OortUnity.Utilities
                 return string.Empty;
             }
 
-            return extension.StartsWith(".")
-                ? extension
-                : "." + extension;
+            return extension.StartsWith(".") ? extension : "." + extension;
         }
 
         #endregion
@@ -51,10 +49,10 @@ namespace OortUnity.Utilities
         #region Path
 
         /// <summary>
-        /// °æ·Î ±¸ºĞÀÚ¸¦ ½½·¡½Ã(/)·Î ÅëÀÏÇÕ´Ï´Ù.
+        /// ê²½ë¡œ êµ¬ë¶„ìë¥¼ ìŠ¬ë˜ì‹œ(/)ë¡œ í†µì¼í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="path">Á¤±ÔÈ­ÇÒ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <returns>°æ·Î ±¸ºĞÀÚ°¡ ½½·¡½Ã(/)·Î ÅëÀÏµÈ °æ·Î¸¦ ¹İÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="path">ì •ê·œí™”í•  ê²½ë¡œì…ë‹ˆë‹¤.</param>
+        /// <returns>ê²½ë¡œ êµ¬ë¶„ìê°€ ìŠ¬ë˜ì‹œ(/)ë¡œ í†µì¼ëœ ê²½ë¡œë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static string NormalizePath(string path)
         {
             if (string.IsNullOrEmpty(path))
@@ -66,10 +64,10 @@ namespace OortUnity.Utilities
         }
 
         /// <summary>
-        /// °æ·Î ³¡¿¡ µğ·ºÅä¸® ±¸ºĞÀÚ°¡ ¾øÀ¸¸é ½½·¡½Ã(/)¸¦ Ãß°¡ÇÕ´Ï´Ù.
+        /// ê²½ë¡œ ëì— ë””ë ‰í† ë¦¬ êµ¬ë¶„ìê°€ ì—†ìœ¼ë©´ ìŠ¬ë˜ì‹œ(/)ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="path">µğ·ºÅä¸® °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <returns>½½·¡½Ã(/)·Î ³¡³ª´Â µğ·ºÅä¸® °æ·Î¸¦ ¹İÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="path">ë””ë ‰í† ë¦¬ ê²½ë¡œì…ë‹ˆë‹¤.</param>
+        /// <returns>ìŠ¬ë˜ì‹œ(/)ë¡œ ëë‚˜ëŠ” ë””ë ‰í† ë¦¬ ê²½ë¡œë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         private static string EnsureTrailingSeparator(string path)
         {
             if (string.IsNullOrEmpty(path))
@@ -79,16 +77,14 @@ namespace OortUnity.Utilities
 
             path = NormalizePath(path);
 
-            return path.EndsWith("/")
-                ? path
-                : path + "/";
+            return path.EndsWith("/") ? path : path + "/";
         }
 
         /// <summary>
-        /// ·çÆ® °æ·Î¸¦ Á¦¿ÜÇÏ°í °æ·Î ³¡ÀÇ µğ·ºÅä¸® ±¸ºĞÀÚ¸¦ Á¦°ÅÇÕ´Ï´Ù.
+        /// ë£¨íŠ¸ ê²½ë¡œë¥¼ ì œì™¸í•˜ê³  ê²½ë¡œ ëì˜ ë””ë ‰í† ë¦¬ êµ¬ë¶„ìë¥¼ ì œê±°í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="path">µğ·ºÅä¸® °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <returns>³¡ÀÇ µğ·ºÅä¸® ±¸ºĞÀÚ°¡ Á¦°ÅµÈ °æ·Î¸¦ ¹İÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="path">ë””ë ‰í† ë¦¬ ê²½ë¡œì…ë‹ˆë‹¤.</param>
+        /// <returns>ëì˜ ë””ë ‰í† ë¦¬ êµ¬ë¶„ìê°€ ì œê±°ëœ ê²½ë¡œë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         private static string RemoveTrailingSeparator(string path)
         {
             if (string.IsNullOrEmpty(path))
@@ -99,9 +95,7 @@ namespace OortUnity.Utilities
             path = NormalizePath(path);
 
             string rootPath = NormalizePath(Path.GetPathRoot(path));
-            int minimumLength = string.IsNullOrEmpty(rootPath)
-                ? 0
-                : rootPath.Length;
+            int minimumLength = string.IsNullOrEmpty(rootPath) ? 0 : rootPath.Length;
 
             while (path.Length > minimumLength && path.EndsWith("/"))
             {
@@ -116,19 +110,20 @@ namespace OortUnity.Utilities
         #region Unique
 
         /// <summary>
-        /// ÁöÁ¤µÈ Æú´õ¿¡¼­ Áßº¹µÇÁö ¾Ê´Â ÆÄÀÏ¸íÀ» ¹İÈ¯ÇÕ´Ï´Ù.
-        /// ½ÇÁ¦ ÆÄÀÏÀÌ³ª µğ·ºÅä¸®´Â »ı¼ºÇÏÁö ¾Ê½À´Ï´Ù.
+        /// ì§€ì •ëœ í´ë”ì—ì„œ ì¤‘ë³µë˜ì§€ ì•ŠëŠ” íŒŒì¼ëª…ì„ ë°˜í™˜í•©ë‹ˆë‹¤.
+        /// ì‹¤ì œ íŒŒì¼ì´ë‚˜ ë””ë ‰í† ë¦¬ëŠ” ìƒì„±í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
         /// </summary>
-        /// <param name="folderPath">ÆÄÀÏÀÌ À§Ä¡ÇÒ Æú´õ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="baseName">±âº» ÆÄÀÏ¸íÀÔ´Ï´Ù.</param>
-        /// <param name="extension">ÆÄÀÏ È®ÀåÀÚÀÔ´Ï´Ù. Á¡(.)Àº »ı·«ÇÒ ¼ö ÀÖ½À´Ï´Ù.</param>
-        /// <param name="reservedPaths">ÀÌ¹Ì ¿¹¾àµÇ¾î »ç¿ëÇÒ ¼ö ¾ø´Â ÀüÃ¼ ÆÄÀÏ °æ·Î ¸ñ·ÏÀÔ´Ï´Ù.</param>
-        /// <returns>Áßº¹µÇÁö ¾Ê´Â ÆÄÀÏ¸íÀ» ¹İÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="folderPath">íŒŒì¼ì´ ìœ„ì¹˜í•  í´ë” ê²½ë¡œì…ë‹ˆë‹¤.</param>
+        /// <param name="baseName">ê¸°ë³¸ íŒŒì¼ëª…ì…ë‹ˆë‹¤.</param>
+        /// <param name="extension">íŒŒì¼ í™•ì¥ìì…ë‹ˆë‹¤. ì (.)ì€ ìƒëµí•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.</param>
+        /// <param name="reservedPaths">ì´ë¯¸ ì˜ˆì•½ë˜ì–´ ì‚¬ìš©í•  ìˆ˜ ì—†ëŠ” ì „ì²´ íŒŒì¼ ê²½ë¡œ ëª©ë¡ì…ë‹ˆë‹¤.</param>
+        /// <returns>ì¤‘ë³µë˜ì§€ ì•ŠëŠ” íŒŒì¼ëª…ì„ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static string GetUniqueFileName(
             string folderPath,
             string baseName,
             string extension,
-            IEnumerable<string> reservedPaths = null)
+            IEnumerable<string> reservedPaths = null
+        )
         {
             extension = NormalizeExtension(extension);
 
@@ -138,16 +133,12 @@ namespace OortUnity.Utilities
 
             while (true)
             {
-                string suffix = counter == 0
-                    ? string.Empty
-                    : $"_{counter}";
+                string suffix = counter == 0 ? string.Empty : $"_{counter}";
 
                 string fileName = $"{safeBaseName}{suffix}{extension}";
                 string fullPath = Path.Combine(folderPath, fileName);
 
-                if (!File.Exists(fullPath) &&
-                    !Directory.Exists(fullPath) &&
-                    !ContainsPath(reservedPaths, fullPath))
+                if (!File.Exists(fullPath) && !Directory.Exists(fullPath) && !ContainsPath(reservedPaths, fullPath))
                 {
                     return fileName;
                 }
@@ -157,25 +148,22 @@ namespace OortUnity.Utilities
         }
 
         /// <summary>
-        /// ÁöÁ¤µÈ Æú´õ¿¡¼­ Áßº¹µÇÁö ¾Ê´Â ÀüÃ¼ ÆÄÀÏ °æ·Î¸¦ ¹İÈ¯ÇÕ´Ï´Ù.
-        /// ½ÇÁ¦ ÆÄÀÏÀÌ³ª µğ·ºÅä¸®´Â »ı¼ºÇÏÁö ¾Ê½À´Ï´Ù.
+        /// ì§€ì •ëœ í´ë”ì—ì„œ ì¤‘ë³µë˜ì§€ ì•ŠëŠ” ì „ì²´ íŒŒì¼ ê²½ë¡œë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
+        /// ì‹¤ì œ íŒŒì¼ì´ë‚˜ ë””ë ‰í† ë¦¬ëŠ” ìƒì„±í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
         /// </summary>
-        /// <param name="folderPath">ÆÄÀÏÀÌ À§Ä¡ÇÒ Æú´õ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="baseName">±âº» ÆÄÀÏ¸íÀÔ´Ï´Ù.</param>
-        /// <param name="extension">ÆÄÀÏ È®ÀåÀÚÀÔ´Ï´Ù. Á¡(.)Àº »ı·«ÇÒ ¼ö ÀÖ½À´Ï´Ù.</param>
-        /// <param name="reservedPaths">ÀÌ¹Ì ¿¹¾àµÇ¾î »ç¿ëÇÒ ¼ö ¾ø´Â ÀüÃ¼ ÆÄÀÏ °æ·Î ¸ñ·ÏÀÔ´Ï´Ù.</param>
-        /// <returns>Áßº¹µÇÁö ¾Ê´Â ÀüÃ¼ ÆÄÀÏ °æ·Î¸¦ ¹İÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="folderPath">íŒŒì¼ì´ ìœ„ì¹˜í•  í´ë” ê²½ë¡œì…ë‹ˆë‹¤.</param>
+        /// <param name="baseName">ê¸°ë³¸ íŒŒì¼ëª…ì…ë‹ˆë‹¤.</param>
+        /// <param name="extension">íŒŒì¼ í™•ì¥ìì…ë‹ˆë‹¤. ì (.)ì€ ìƒëµí•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.</param>
+        /// <param name="reservedPaths">ì´ë¯¸ ì˜ˆì•½ë˜ì–´ ì‚¬ìš©í•  ìˆ˜ ì—†ëŠ” ì „ì²´ íŒŒì¼ ê²½ë¡œ ëª©ë¡ì…ë‹ˆë‹¤.</param>
+        /// <returns>ì¤‘ë³µë˜ì§€ ì•ŠëŠ” ì „ì²´ íŒŒì¼ ê²½ë¡œë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static string GetUniqueFilePath(
             string folderPath,
             string baseName,
             string extension,
-            IEnumerable<string> reservedPaths = null)
+            IEnumerable<string> reservedPaths = null
+        )
         {
-            string fileName = GetUniqueFileName(
-                folderPath,
-                baseName,
-                extension,
-                reservedPaths);
+            string fileName = GetUniqueFileName(folderPath, baseName, extension, reservedPaths);
 
             return NormalizePath(Path.Combine(folderPath, fileName));
         }
@@ -185,16 +173,15 @@ namespace OortUnity.Utilities
         #region Comparison
 
         /// <summary>
-        /// µÎ °æ·Î°¡ µ¿ÀÏÇÑ À§Ä¡¸¦ °¡¸®Å°´ÂÁö È®ÀÎÇÕ´Ï´Ù.
-        /// »ó´ë °æ·Î¿Í °æ·Î ±¸ºĞÀÚ Â÷ÀÌ¸¦ Á¤±ÔÈ­ÇÑ µÚ ºñ±³ÇÕ´Ï´Ù.
+        /// ë‘ ê²½ë¡œê°€ ë™ì¼í•œ ìœ„ì¹˜ë¥¼ ê°€ë¦¬í‚¤ëŠ”ì§€ í™•ì¸í•©ë‹ˆë‹¤.
+        /// ìƒëŒ€ ê²½ë¡œì™€ ê²½ë¡œ êµ¬ë¶„ì ì°¨ì´ë¥¼ ì •ê·œí™”í•œ ë’¤ ë¹„êµí•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="pathA">ºñ±³ÇÒ Ã¹ ¹øÂ° °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="pathB">ºñ±³ÇÒ µÎ ¹øÂ° °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <returns>µÎ °æ·Î°¡ µ¿ÀÏÇÏ¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹İÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="pathA">ë¹„êµí•  ì²« ë²ˆì§¸ ê²½ë¡œì…ë‹ˆë‹¤.</param>
+        /// <param name="pathB">ë¹„êµí•  ë‘ ë²ˆì§¸ ê²½ë¡œì…ë‹ˆë‹¤.</param>
+        /// <returns>ë‘ ê²½ë¡œê°€ ë™ì¼í•˜ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static bool IsSamePath(string pathA, string pathB)
         {
-            if (string.IsNullOrEmpty(pathA) ||
-                string.IsNullOrEmpty(pathB))
+            if (string.IsNullOrEmpty(pathA) || string.IsNullOrEmpty(pathB))
             {
                 return false;
             }
@@ -205,23 +192,19 @@ namespace OortUnity.Utilities
             fullPathA = RemoveTrailingSeparator(fullPathA);
             fullPathB = RemoveTrailingSeparator(fullPathB);
 
-            return string.Equals(
-                fullPathA,
-                fullPathB,
-                GetPathComparison());
+            return string.Equals(fullPathA, fullPathB, GetPathComparison());
         }
 
         /// <summary>
-        /// ÁöÁ¤µÈ °æ·Î°¡ ºÎ¸ğ °æ·ÎÀÇ ÇÏÀ§¿¡ À§Ä¡ÇÏ´ÂÁö È®ÀÎÇÕ´Ï´Ù.
-        /// µ¿ÀÏÇÑ °æ·Î´Â ÇÏÀ§ °æ·Î·Î ÆÇ´ÜÇÏÁö ¾Ê½À´Ï´Ù.
+        /// ì§€ì •ëœ ê²½ë¡œê°€ ë¶€ëª¨ ê²½ë¡œì˜ í•˜ìœ„ì— ìœ„ì¹˜í•˜ëŠ”ì§€ í™•ì¸í•©ë‹ˆë‹¤.
+        /// ë™ì¼í•œ ê²½ë¡œëŠ” í•˜ìœ„ ê²½ë¡œë¡œ íŒë‹¨í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
         /// </summary>
-        /// <param name="path">È®ÀÎÇÒ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <param name="parentPath">ºÎ¸ğ °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <returns>ÁöÁ¤µÈ °æ·Î°¡ ºÎ¸ğ °æ·ÎÀÇ ÇÏÀ§¿¡ ÀÖÀ¸¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹İÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="path">í™•ì¸í•  ê²½ë¡œì…ë‹ˆë‹¤.</param>
+        /// <param name="parentPath">ë¶€ëª¨ ê²½ë¡œì…ë‹ˆë‹¤.</param>
+        /// <returns>ì§€ì •ëœ ê²½ë¡œê°€ ë¶€ëª¨ ê²½ë¡œì˜ í•˜ìœ„ì— ìˆìœ¼ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static bool IsSubPathOf(string path, string parentPath)
         {
-            if (string.IsNullOrEmpty(path) ||
-                string.IsNullOrEmpty(parentPath))
+            if (string.IsNullOrEmpty(path) || string.IsNullOrEmpty(parentPath))
             {
                 return false;
             }
@@ -232,30 +215,23 @@ namespace OortUnity.Utilities
             fullPath = RemoveTrailingSeparator(fullPath);
             fullParentPath = RemoveTrailingSeparator(fullParentPath);
 
-            if (string.Equals(
-                fullPath,
-                fullParentPath,
-                GetPathComparison()))
+            if (string.Equals(fullPath, fullParentPath, GetPathComparison()))
             {
                 return false;
             }
 
             fullParentPath = EnsureTrailingSeparator(fullParentPath);
 
-            return fullPath.StartsWith(
-                fullParentPath,
-                GetPathComparison());
+            return fullPath.StartsWith(fullParentPath, GetPathComparison());
         }
 
         /// <summary>
-        /// ÁöÁ¤µÈ °æ·Î ¸ñ·Ï¿¡ ´ë»ó °æ·Î°¡ Æ÷ÇÔµÇ¾î ÀÖ´ÂÁö È®ÀÎÇÕ´Ï´Ù.
+        /// ì§€ì •ëœ ê²½ë¡œ ëª©ë¡ì— ëŒ€ìƒ ê²½ë¡œê°€ í¬í•¨ë˜ì–´ ìˆëŠ”ì§€ í™•ì¸í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="paths">È®ÀÎÇÒ °æ·Î ¸ñ·ÏÀÔ´Ï´Ù.</param>
-        /// <param name="targetPath">Ã£À» ´ë»ó °æ·ÎÀÔ´Ï´Ù.</param>
-        /// <returns>´ë»ó °æ·Î°¡ Æ÷ÇÔµÇ¾î ÀÖÀ¸¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹İÈ¯ÇÕ´Ï´Ù.</returns>
-        private static bool ContainsPath(
-            IEnumerable<string> paths,
-            string targetPath)
+        /// <param name="paths">í™•ì¸í•  ê²½ë¡œ ëª©ë¡ì…ë‹ˆë‹¤.</param>
+        /// <param name="targetPath">ì°¾ì„ ëŒ€ìƒ ê²½ë¡œì…ë‹ˆë‹¤.</param>
+        /// <returns>ëŒ€ìƒ ê²½ë¡œê°€ í¬í•¨ë˜ì–´ ìˆìœ¼ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
+        private static bool ContainsPath(IEnumerable<string> paths, string targetPath)
         {
             if (paths == null)
             {
@@ -279,15 +255,13 @@ namespace OortUnity.Utilities
         }
 
         /// <summary>
-        /// Windows¿¡¼­´Â ´ë¼Ò¹®ÀÚ¸¦ ¹«½ÃÇÏ°í,
-        /// ±× ¿Ü ÇÃ·§Æû¿¡¼­´Â ´ë¼Ò¹®ÀÚ¸¦ ±¸ºĞÇÏ´Â °æ·Î ºñ±³ ¹æ½ÄÀ» ¹İÈ¯ÇÕ´Ï´Ù.
+        /// Windowsì—ì„œëŠ” ëŒ€ì†Œë¬¸ìë¥¼ ë¬´ì‹œí•˜ê³ ,
+        /// ê·¸ ì™¸ í”Œë«í¼ì—ì„œëŠ” ëŒ€ì†Œë¬¸ìë¥¼ êµ¬ë¶„í•˜ëŠ” ê²½ë¡œ ë¹„êµ ë°©ì‹ì„ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <returns>°æ·Î ºñ±³¿¡ »ç¿ëÇÒ ¹®ÀÚ¿­ ºñ±³ ¹æ½ÄÀ» ¹İÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <returns>ê²½ë¡œ ë¹„êµì— ì‚¬ìš©í•  ë¬¸ìì—´ ë¹„êµ ë°©ì‹ì„ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         private static StringComparison GetPathComparison()
         {
-            return Path.DirectorySeparatorChar == '\\'
-                ? StringComparison.OrdinalIgnoreCase
-                : StringComparison.Ordinal;
+            return Path.DirectorySeparatorChar == '\\' ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal;
         }
 
         #endregion

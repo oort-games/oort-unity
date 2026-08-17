@@ -1,7 +1,7 @@
 {
   "name": "com.oortgamestudio.oortunity",
   "displayName": "Oort Unity",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "unity": "2022.3",
   "description": "Oort Unity is a Unity Package Manager (UPM) package that provides reusable runtime components, editor tools, utilities, and sample content for Unity projects",
   "dependencies": {

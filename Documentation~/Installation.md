@@ -33,7 +33,7 @@ To install a specific release, append the release tag to the Git URL.
 Example:
 
 ```text
-https://github.com/oort-games/oort-unity.git#v0.0.1
+https://github.com/oort-games/oort-unity.git#v0.0.2
 ```
 
 ## Samples

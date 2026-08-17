@@ -10,17 +10,8 @@ namespace OortUnity.Editor
     {
         #region Constants
 
-        private const string StyleSheetPath =
-            "Packages/com.oortgamestudio.oortunity/Editor/UI/Styles/OortStyles.uss";
-
-        private const string DefaultIconPath =
-            "Packages/com.oortgamestudio.oortunity/Editor/UI/Icons/icon_oort.png";
-
-        private const string RootClass = "oort-root";
-
-        private const string HeaderClass = "oort-header";
-        private const string HeaderIconClass = "oort-header-icon";
-        private const string HeaderTitleClass = "oort-header-title";
+        private const string StyleSheetPath = "Packages/com.oortgamestudio.oortunity/Editor/UI/Styles/OortStyles.uss";
+        private const string DefaultIconPath = "Packages/com.oortgamestudio.oortunity/Editor/UI/Icons/icon_oort.png";
 
         #endregion
 
@@ -34,9 +25,9 @@ namespace OortUnity.Editor
         #region Assets
 
         /// <summary>
-        /// OortUnity Editor UI¿¡¼­ »ç¿ëÇÏ´Â °øÅë ½ºÅ¸ÀÏ ½ÃÆ®¸¦ ¹İÈ¯ÇÕ´Ï´Ù.
+        /// OortUnity Editor UIì—ì„œ ì‚¬ìš©í•˜ëŠ” ê³µí†µ ìŠ¤íƒ€ì¼ ì‹œíŠ¸ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <returns>°øÅë ½ºÅ¸ÀÏ ½ÃÆ®¸¦ ¹İÈ¯ÇÕ´Ï´Ù. ·Îµå¿¡ ½ÇÆĞÇÏ¸é nullÀ» ¹İÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <returns>ê³µí†µ ìŠ¤íƒ€ì¼ ì‹œíŠ¸ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤. ë¡œë“œì— ì‹¤íŒ¨í•˜ë©´ nullì„ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static StyleSheet StyleSheet
         {
             get
@@ -46,13 +37,11 @@ namespace OortUnity.Editor
                     return _styleSheet;
                 }
 
-                _styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(
-                    StyleSheetPath);
+                _styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(StyleSheetPath);
 
                 if (_styleSheet == null)
                 {
-                    Debug.LogWarning(
-                        $"Failed to load OortUnity style sheet: {StyleSheetPath}");
+                    Debug.LogWarning($"Failed to load OortUnity style sheet: {StyleSheetPath}");
                 }
 
                 return _styleSheet;
@@ -60,9 +49,9 @@ namespace OortUnity.Editor
         }
 
         /// <summary>
-        /// OortUnity Editor UI¿¡¼­ »ç¿ëÇÏ´Â ±âº» ¾ÆÀÌÄÜÀ» ¹İÈ¯ÇÕ´Ï´Ù.
+        /// OortUnity Editor UIì—ì„œ ì‚¬ìš©í•˜ëŠ” ê¸°ë³¸ ì•„ì´ì½˜ì„ ë°˜í™˜í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <returns>±âº» ¾ÆÀÌÄÜÀ» ¹İÈ¯ÇÕ´Ï´Ù. ·Îµå¿¡ ½ÇÆĞÇÏ¸é nullÀ» ¹İÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <returns>ê¸°ë³¸ ì•„ì´ì½˜ì„ ë°˜í™˜í•©ë‹ˆë‹¤. ë¡œë“œì— ì‹¤íŒ¨í•˜ë©´ nullì„ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static Texture2D DefaultIcon
         {
             get
@@ -72,13 +61,11 @@ namespace OortUnity.Editor
                     return _defaultIcon;
                 }
 
-                _defaultIcon = AssetDatabase.LoadAssetAtPath<Texture2D>(
-                    DefaultIconPath);
+                _defaultIcon = AssetDatabase.LoadAssetAtPath<Texture2D>(DefaultIconPath);
 
                 if (_defaultIcon == null)
                 {
-                    Debug.LogWarning(
-                        $"Failed to load OortUnity icon: {DefaultIconPath}");
+                    Debug.LogWarning($"Failed to load OortUnity icon: {DefaultIconPath}");
                 }
 
                 return _defaultIcon;
@@ -90,9 +77,9 @@ namespace OortUnity.Editor
         #region Style
 
         /// <summary>
-        /// ÁöÁ¤µÈ VisualElement¿¡ OortUnity °øÅë ½ºÅ¸ÀÏ ½ÃÆ®¸¦ Àû¿ëÇÕ´Ï´Ù.
+        /// ì§€ì •ëœ VisualElementì— OortUnity ê³µí†µ ìŠ¤íƒ€ì¼ ì‹œíŠ¸ë¥¼ ì ìš©í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="element">½ºÅ¸ÀÏ ½ÃÆ®¸¦ Àû¿ëÇÒ VisualElementÀÔ´Ï´Ù.</param>
+        /// <param name="element">ìŠ¤íƒ€ì¼ ì‹œíŠ¸ë¥¼ ì ìš©í•  VisualElementì…ë‹ˆë‹¤.</param>
         public static void ApplyStyleSheet(VisualElement element)
         {
             if (element == null)
@@ -102,18 +89,17 @@ namespace OortUnity.Editor
 
             StyleSheet styleSheet = StyleSheet;
 
-            if (styleSheet != null &&
-                !element.styleSheets.Contains(styleSheet))
+            if (styleSheet != null && !element.styleSheets.Contains(styleSheet))
             {
                 element.styleSheets.Add(styleSheet);
             }
         }
 
         /// <summary>
-        /// ÁöÁ¤µÈ VisualElement¿¡ OortUnity ·çÆ® ½ºÅ¸ÀÏÀ» Àû¿ëÇÕ´Ï´Ù.
-        /// °øÅë ½ºÅ¸ÀÏ ½ÃÆ®µµ ÇÔ²² Àû¿ëµË´Ï´Ù.
+        /// ì§€ì •ëœ VisualElementì— OortUnity ë£¨íŠ¸ ìŠ¤íƒ€ì¼ì„ ì ìš©í•©ë‹ˆë‹¤.
+        /// ê³µí†µ ìŠ¤íƒ€ì¼ ì‹œíŠ¸ë„ í•¨ê»˜ ì ìš©ë©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="root">·çÆ® ½ºÅ¸ÀÏÀ» Àû¿ëÇÒ VisualElementÀÔ´Ï´Ù.</param>
+        /// <param name="root">ë£¨íŠ¸ ìŠ¤íƒ€ì¼ì„ ì ìš©í•  VisualElementì…ë‹ˆë‹¤.</param>
         public static void ApplyRootStyle(VisualElement root)
         {
             if (root == null)
@@ -122,7 +108,7 @@ namespace OortUnity.Editor
             }
 
             ApplyStyleSheet(root);
-            root.AddToClassList(RootClass);
+            root.AddToClassList(OortStyleClasses.Root);
         }
 
         #endregion
@@ -130,27 +116,25 @@ namespace OortUnity.Editor
         #region Header
 
         /// <summary>
-        /// OortUnity ±âº» ¾ÆÀÌÄÜ°ú ÁöÁ¤µÈ Á¦¸ñÀ» Ç¥½ÃÇÏ´Â °øÅë Çì´õ¸¦ »ı¼ºÇÕ´Ï´Ù.
+        /// OortUnity ê¸°ë³¸ ì•„ì´ì½˜ê³¼ ì§€ì •ëœ ì œëª©ì„ í‘œì‹œí•˜ëŠ” ê³µí†µ í—¤ë”ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="title">Çì´õ¿¡ Ç¥½ÃÇÒ Á¦¸ñÀÔ´Ï´Ù.</param>
-        /// <returns>»ı¼ºµÈ Çì´õ VisualElement¸¦ ¹İÈ¯ÇÕ´Ï´Ù.</returns>
+        /// <param name="title">í—¤ë”ì— í‘œì‹œí•  ì œëª©ì…ë‹ˆë‹¤.</param>
+        /// <returns>ìƒì„±ëœ í—¤ë” VisualElementë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
         public static VisualElement CreateHeader(string title)
         {
             return CreateHeader(title, DefaultIcon);
         }
 
         /// <summary>
-        /// ÁöÁ¤µÈ ¾ÆÀÌÄÜ°ú Á¦¸ñÀ» Ç¥½ÃÇÏ´Â OortUnity °øÅë Çì´õ¸¦ »ı¼ºÇÕ´Ï´Ù.
+        /// ì§€ì •ëœ ì•„ì´ì½˜ê³¼ ì œëª©ì„ í‘œì‹œí•˜ëŠ” OortUnity ê³µí†µ í—¤ë”ë¥¼ ìƒì„±í•©ë‹ˆë‹¤.
         /// </summary>
-        /// <param name="title">Çì´õ¿¡ Ç¥½ÃÇÒ Á¦¸ñÀÔ´Ï´Ù.</param>
-        /// <param name="icon">Çì´õ¿¡ Ç¥½ÃÇÒ ¾ÆÀÌÄÜÀÔ´Ï´Ù. nullÀÌ¸é ¾ÆÀÌÄÜÀ» Ç¥½ÃÇÏÁö ¾Ê½À´Ï´Ù.</param>
-        /// <returns>»ı¼ºµÈ Çì´õ VisualElement¸¦ ¹İÈ¯ÇÕ´Ï´Ù.</returns>
-        public static VisualElement CreateHeader(
-            string title,
-            Texture2D icon)
+        /// <param name="title">í—¤ë”ì— í‘œì‹œí•  ì œëª©ì…ë‹ˆë‹¤.</param>
+        /// <param name="icon">í—¤ë”ì— í‘œì‹œí•  ì•„ì´ì½˜ì…ë‹ˆë‹¤. nullì´ë©´ ì•„ì´ì½˜ì„ í‘œì‹œí•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.</param>
+        /// <returns>ìƒì„±ëœ í—¤ë” VisualElementë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
+        public static VisualElement CreateHeader(string title, Texture2D icon)
         {
             var header = new VisualElement();
-            header.AddToClassList(HeaderClass);
+            header.AddToClassList(OortStyleClasses.Header);
 
             if (icon != null)
             {
@@ -158,16 +142,16 @@ namespace OortUnity.Editor
                 {
                     image = icon,
                     scaleMode = ScaleMode.ScaleToFit,
-                    pickingMode = PickingMode.Ignore
+                    pickingMode = PickingMode.Ignore,
                 };
 
-                iconImage.AddToClassList(HeaderIconClass);
+                iconImage.AddToClassList(OortStyleClasses.HeaderIcon);
 
                 header.Add(iconImage);
             }
 
             var titleLabel = new Label(title);
-            titleLabel.AddToClassList(HeaderTitleClass);
+            titleLabel.AddToClassList(OortStyleClasses.HeaderTitle);
 
             header.Add(titleLabel);
 

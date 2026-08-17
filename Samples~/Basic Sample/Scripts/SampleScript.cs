@@ -2,8 +2,5 @@ using UnityEngine;
 
 namespace OortUnity.Samples
 {
-    public class SampleScript : MonoBehaviour
-    {
-        
-    }
+    public class SampleScript : MonoBehaviour { }
 }

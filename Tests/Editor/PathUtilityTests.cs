@@ -14,10 +14,7 @@ namespace OortUnity.Tests
         [SetUp]
         public void SetUp()
         {
-            _testDirectory = Path.Combine(
-                Path.GetTempPath(),
-                "OortUnityTests",
-                Guid.NewGuid().ToString());
+            _testDirectory = Path.Combine(Path.GetTempPath(), "OortUnityTests", Guid.NewGuid().ToString());
 
             Directory.CreateDirectory(_testDirectory);
         }
@@ -40,9 +37,7 @@ namespace OortUnity.Tests
         [TestCase("json", ".json")]
         [TestCase("", "")]
         [TestCase(null, "")]
-        public void NormalizeExtension_ReturnsNormalizedExtension(
-            string extension,
-            string expected)
+        public void NormalizeExtension_ReturnsNormalizedExtension(string extension, string expected)
         {
             string result = PathUtility.NormalizeExtension(extension);
 
@@ -56,12 +51,9 @@ namespace OortUnity.Tests
         [Test]
         public void NormalizePath_ReplacesBackslashes()
         {
-            string result = PathUtility.NormalizePath(
-                @"Assets\Editor\Tools\Screenshot");
+            string result = PathUtility.NormalizePath(@"Assets\Editor\Tools\Screenshot");
 
-            Assert.AreEqual(
-                "Assets/Editor/Tools/Screenshot",
-                result);
+            Assert.AreEqual("Assets/Editor/Tools/Screenshot", result);
         }
 
         #endregion
@@ -100,9 +92,7 @@ namespace OortUnity.Tests
             string parentPath = Path.Combine(_testDirectory, "Parent");
             string childPath = Path.Combine(parentPath, "Child");
 
-            bool result = PathUtility.IsSubPathOf(
-                childPath,
-                parentPath);
+            bool result = PathUtility.IsSubPathOf(childPath, parentPath);
 
             Assert.IsTrue(result);
         }
@@ -112,9 +102,7 @@ namespace OortUnity.Tests
         {
             string path = Path.Combine(_testDirectory, "Folder");
 
-            bool result = PathUtility.IsSubPathOf(
-                path,
-                path);
+            bool result = PathUtility.IsSubPathOf(path, path);
 
             Assert.IsFalse(result);
         }
@@ -126,58 +114,35 @@ namespace OortUnity.Tests
         [Test]
         public void GetUniqueFileName_ReturnsBaseName_WhenFileDoesNotExist()
         {
-            string result = PathUtility.GetUniqueFileName(
-                _testDirectory,
-                "Screenshot",
-                "png");
+            string result = PathUtility.GetUniqueFileName(_testDirectory, "Screenshot", "png");
 
-            Assert.AreEqual(
-                "Screenshot.png",
-                result);
+            Assert.AreEqual("Screenshot.png", result);
         }
 
         [Test]
         public void GetUniqueFileName_AddsSuffix_WhenFileExists()
         {
-            string existingPath = Path.Combine(
-                _testDirectory,
-                "Screenshot.png");
+            string existingPath = Path.Combine(_testDirectory, "Screenshot.png");
 
             File.WriteAllText(existingPath, string.Empty);
 
-            string result = PathUtility.GetUniqueFileName(
-                _testDirectory,
-                "Screenshot",
-                "png");
+            string result = PathUtility.GetUniqueFileName(_testDirectory, "Screenshot", "png");
 
-            Assert.AreEqual(
-                "Screenshot_1.png",
-                result);
+            Assert.AreEqual("Screenshot_1.png", result);
         }
 
         [Test]
         public void GetUniqueFileName_IncrementsSuffix_WhenMultipleFilesExist()
         {
-            File.WriteAllText(
-                Path.Combine(_testDirectory, "Screenshot.png"),
-                string.Empty);
+            File.WriteAllText(Path.Combine(_testDirectory, "Screenshot.png"), string.Empty);
 
-            File.WriteAllText(
-                Path.Combine(_testDirectory, "Screenshot_1.png"),
-                string.Empty);
+            File.WriteAllText(Path.Combine(_testDirectory, "Screenshot_1.png"), string.Empty);
 
-            File.WriteAllText(
-                Path.Combine(_testDirectory, "Screenshot_2.png"),
-                string.Empty);
+            File.WriteAllText(Path.Combine(_testDirectory, "Screenshot_2.png"), string.Empty);
 
-            string result = PathUtility.GetUniqueFileName(
-                _testDirectory,
-                "Screenshot",
-                "png");
+            string result = PathUtility.GetUniqueFileName(_testDirectory, "Screenshot", "png");
 
-            Assert.AreEqual(
-                "Screenshot_3.png",
-                result);
+            Assert.AreEqual("Screenshot_3.png", result);
         }
 
         #endregion

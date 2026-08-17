@@ -10,22 +10,17 @@ namespace OortUnity.Editor
 {
     public class PlayerPrefsManagerWindow : EditorWindow
     {
+        private enum SortColumn
+        {
+            Key,
+            Type,
+        }
+
         #region Constants
 
         private const string MenuPath = "Oort/Tools/PlayerPrefs Manager";
         private const string WindowTitle = "PlayerPrefs Manager";
         private const string HeaderTitle = "PlayerPrefs Manager";
-
-        private const string ContentClass = "oort-content";
-        private const string ToolbarClass = "oort-prefs-toolbar";
-        private const string SearchFieldClass = "oort-prefs-search";
-        private const string ListHeaderClass = "oort-prefs-list-header";
-        private const string RowClass = "oort-prefs-row";
-        private const string KeyClass = "oort-prefs-key";
-        private const string TypeClass = "oort-prefs-type";
-        private const string ValueClass = "oort-prefs-value";
-        private const string SmallButtonClass = "oort-small-button";
-        private const string ActionButtonClass = "oort-prefs-action-button";
 
         #endregion
 
@@ -37,6 +32,11 @@ namespace OortUnity.Editor
         private TextField _searchField;
         private ListView _listView;
         private Label _countLabel;
+        private Button _keySortButton;
+        private Button _typeSortButton;
+
+        private SortColumn _sortColumn = SortColumn.Key;
+        private bool _sortAscending = true;
 
         #endregion
 
@@ -45,8 +45,7 @@ namespace OortUnity.Editor
         [MenuItem(MenuPath)]
         public static void OpenWindow()
         {
-            PlayerPrefsManagerWindow window =
-                GetWindow<PlayerPrefsManagerWindow>();
+            PlayerPrefsManagerWindow window = GetWindow<PlayerPrefsManagerWindow>();
 
             window.titleContent = new GUIContent(WindowTitle);
             window.minSize = new Vector2(600f, 350f);
@@ -73,7 +72,7 @@ namespace OortUnity.Editor
         private VisualElement CreateContent()
         {
             var content = new VisualElement();
-            content.AddToClassList(ContentClass);
+            content.AddToClassList(OortStyleClasses.Content);
 
             content.Add(CreateToolbar());
             content.Add(CreateListHeader());
@@ -85,23 +84,24 @@ namespace OortUnity.Editor
         private VisualElement CreateToolbar()
         {
             var toolbar = new VisualElement();
-            toolbar.AddToClassList(ToolbarClass);
+            toolbar.AddToClassList(OortStyleClasses.PlayerPrefs.Toolbar);
 
             _searchField = new TextField();
-            _searchField.AddToClassList(SearchFieldClass);
+            _searchField.AddToClassList(OortStyleClasses.PlayerPrefs.Search);
             _searchField.RegisterValueChangedCallback(_ => ApplyFilter());
 
             _countLabel = new Label();
 
-            var refreshButton = new Button(Refresh)
-            {
-                text = "Refresh"
-            };
-            refreshButton.AddToClassList(SmallButtonClass);
+            var refreshButton = new Button(Refresh) { text = "Refresh" };
+            refreshButton.AddToClassList(OortStyleClasses.SmallButton);
+
+            var deleteAllButton = new Button(DeleteAllEntries) { text = "Delete All" };
+            deleteAllButton.AddToClassList(OortStyleClasses.SmallButton);
 
             toolbar.Add(_searchField);
             toolbar.Add(_countLabel);
             toolbar.Add(refreshButton);
+            toolbar.Add(deleteAllButton);
 
             return toolbar;
         }
@@ -109,19 +109,23 @@ namespace OortUnity.Editor
         private VisualElement CreateListHeader()
         {
             var header = new VisualElement();
-            header.AddToClassList(ListHeaderClass);
+            header.AddToClassList(OortStyleClasses.PlayerPrefs.ListHeader);
 
-            Label keyLabel = new Label("Key");
-            keyLabel.AddToClassList(KeyClass);
+            _keySortButton = new Button(() => ToggleSort(SortColumn.Key)) { tooltip = "Sort by key" };
+            _keySortButton.AddToClassList(OortStyleClasses.PlayerPrefs.Key);
+            _keySortButton.AddToClassList(OortStyleClasses.PlayerPrefs.SortButton);
 
-            Label typeLabel = new Label("Type");
-            typeLabel.AddToClassList(TypeClass);
+            _typeSortButton = new Button(() => ToggleSort(SortColumn.Type)) { tooltip = "Sort by type" };
+            _typeSortButton.AddToClassList(OortStyleClasses.PlayerPrefs.Type);
+            _typeSortButton.AddToClassList(OortStyleClasses.PlayerPrefs.SortButton);
 
             Label valueLabel = new Label("Value");
-            valueLabel.AddToClassList(ValueClass);
+            valueLabel.AddToClassList(OortStyleClasses.PlayerPrefs.Value);
 
-            header.Add(keyLabel);
-            header.Add(typeLabel);
+            UpdateSortButtons();
+
+            header.Add(_keySortButton);
+            header.Add(_typeSortButton);
             header.Add(valueLabel);
 
             return header;
@@ -132,19 +136,15 @@ namespace OortUnity.Editor
             _listView = new ListView
             {
                 fixedItemHeight = 30f,
-                virtualizationMethod =
-                    CollectionVirtualizationMethod.FixedHeight,
+                virtualizationMethod = CollectionVirtualizationMethod.FixedHeight,
 
-                makeItem = () =>
-                    new PlayerPrefsRow(
-                        SaveEntry,
-                        DeleteEntry),
+                makeItem = () => new PlayerPrefsRow(SaveEntry, DeleteEntry),
 
                 bindItem = (element, index) =>
                 {
                     var row = (PlayerPrefsRow)element;
                     row.Bind(_filteredEntries[index]);
-                }
+                },
             };
 
             _listView.style.flexGrow = 1f;
@@ -172,14 +172,17 @@ namespace OortUnity.Editor
 
             foreach (PlayerPrefsEntry entry in _entries)
             {
-                if (string.IsNullOrWhiteSpace(search) ||
-                    entry.Key.IndexOf(
-                        search,
-                        StringComparison.OrdinalIgnoreCase) >= 0)
+                if (
+                    string.IsNullOrWhiteSpace(search)
+                    || entry.Key.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0
+                )
                 {
                     _filteredEntries.Add(entry);
                 }
             }
+
+            SortFilteredEntries();
+            UpdateSortButtons();
 
             if (_listView != null)
             {
@@ -193,23 +196,69 @@ namespace OortUnity.Editor
             }
         }
 
+        private void ToggleSort(SortColumn column)
+        {
+            if (_sortColumn == column)
+            {
+                _sortAscending = !_sortAscending;
+            }
+            else
+            {
+                _sortColumn = column;
+                _sortAscending = true;
+            }
+
+            ApplyFilter();
+        }
+
+        private void SortFilteredEntries()
+        {
+            _filteredEntries.Sort(CompareEntries);
+        }
+
+        private int CompareEntries(PlayerPrefsEntry a, PlayerPrefsEntry b)
+        {
+            int comparison;
+
+            if (_sortColumn == SortColumn.Type)
+            {
+                comparison = string.Compare(a.Type.ToString(), b.Type.ToString(), StringComparison.OrdinalIgnoreCase);
+
+                if (comparison == 0)
+                {
+                    comparison = string.Compare(a.Key, b.Key, StringComparison.OrdinalIgnoreCase);
+                }
+            }
+            else
+            {
+                comparison = string.Compare(a.Key, b.Key, StringComparison.OrdinalIgnoreCase);
+            }
+
+            return _sortAscending ? comparison : -comparison;
+        }
+
+        private void UpdateSortButtons()
+        {
+            if (_keySortButton == null || _typeSortButton == null)
+            {
+                return;
+            }
+
+            string indicator = _sortAscending ? "\u25B2" : "\u25BC";
+
+            _keySortButton.text = _sortColumn == SortColumn.Key ? $"Key {indicator}" : "Key";
+            _typeSortButton.text = _sortColumn == SortColumn.Type ? $"Type {indicator}" : "Type";
+        }
+
         #endregion
 
         #region Actions
 
-        private void SaveEntry(
-            PlayerPrefsEntry entry,
-            string value)
+        private void SaveEntry(PlayerPrefsEntry entry, string value)
         {
-            if (!PlayerPrefsStorage.TrySetValue(
-                entry,
-                value,
-                out string error))
+            if (!PlayerPrefsStorage.TrySetValue(entry, value, out string error))
             {
-                EditorUtility.DisplayDialog(
-                    "PlayerPrefs Manager",
-                    error,
-                    "OK");
+                EditorUtility.DisplayDialog("PlayerPrefs Manager", error, "OK");
 
                 return;
             }
@@ -223,11 +272,36 @@ namespace OortUnity.Editor
                 "Delete PlayerPrefs",
                 $"Delete '{entry.Key}'?",
                 "Delete",
-                "Cancel");
+                "Cancel"
+            );
 
-            if (!confirmed) return;
+            if (!confirmed)
+                return;
 
             PlayerPrefsStorage.Delete(entry.Key);
+            Refresh();
+        }
+
+        private void DeleteAllEntries()
+        {
+            bool confirmed = EditorUtility.DisplayDialog(
+                "Delete All PlayerPrefs",
+                "Delete all user-created PlayerPrefs entries?\n\n"
+                    + "Unity-generated entries will be preserved.\n\n"
+                    + "This action cannot be undone.",
+                "Delete All",
+                "Cancel"
+            );
+
+            if (!confirmed)
+            {
+                return;
+            }
+
+            int deletedCount = PlayerPrefsStorage.DeleteAllUserEntries();
+
+            Debug.Log($"[PlayerPrefs Manager] Deleted {deletedCount} user-created PlayerPrefs entries.");
+
             Refresh();
         }
 
@@ -243,38 +317,26 @@ namespace OortUnity.Editor
 
             private PlayerPrefsEntry _entry;
 
-            public PlayerPrefsRow(
-                Action<PlayerPrefsEntry, string> saveAction,
-                Action<PlayerPrefsEntry> deleteAction)
+            public PlayerPrefsRow(Action<PlayerPrefsEntry, string> saveAction, Action<PlayerPrefsEntry> deleteAction)
             {
-                AddToClassList(RowClass);
+                AddToClassList(OortStyleClasses.PlayerPrefs.Row);
 
                 _keyLabel = new Label();
-                _keyLabel.AddToClassList(KeyClass);
+                _keyLabel.AddToClassList(OortStyleClasses.PlayerPrefs.Key);
 
                 _typeLabel = new Label();
-                _typeLabel.AddToClassList(TypeClass);
+                _typeLabel.AddToClassList(OortStyleClasses.PlayerPrefs.Type);
 
                 _valueField = new TextField();
-                _valueField.AddToClassList(ValueClass);
+                _valueField.AddToClassList(OortStyleClasses.PlayerPrefs.Value);
 
-                var saveButton = new Button(
-                    () => saveAction?.Invoke(
-                        _entry,
-                        _valueField.value))
-                {
-                    text = "Save"
-                };
-                saveButton.AddToClassList(SmallButtonClass);
-                saveButton.AddToClassList(ActionButtonClass);
+                var saveButton = new Button(() => saveAction?.Invoke(_entry, _valueField.value)) { text = "Save" };
+                saveButton.AddToClassList(OortStyleClasses.SmallButton);
+                saveButton.AddToClassList(OortStyleClasses.PlayerPrefs.ActionButton);
 
-                var deleteButton = new Button(
-                    () => deleteAction?.Invoke(_entry))
-                {
-                    text = "Delete"
-                };
-                deleteButton.AddToClassList(SmallButtonClass);
-                deleteButton.AddToClassList(ActionButtonClass);
+                var deleteButton = new Button(() => deleteAction?.Invoke(_entry)) { text = "Delete" };
+                deleteButton.AddToClassList(OortStyleClasses.SmallButton);
+                deleteButton.AddToClassList(OortStyleClasses.PlayerPrefs.ActionButton);
 
                 Add(_keyLabel);
                 Add(_typeLabel);

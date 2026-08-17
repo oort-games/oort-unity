@@ -6,7 +6,7 @@ namespace OortUnity.Editor
     {
         Int,
         Float,
-        String
+        String,
     }
 
     internal sealed class PlayerPrefsEntry
@@ -15,10 +15,7 @@ namespace OortUnity.Editor
         public PlayerPrefsValueType Type { get; }
         public string Value { get; set; }
 
-        public PlayerPrefsEntry(
-            string key,
-            PlayerPrefsValueType type,
-            string value)
+        public PlayerPrefsEntry(string key, PlayerPrefsValueType type, string value)
         {
             Key = key;
             Type = type;
