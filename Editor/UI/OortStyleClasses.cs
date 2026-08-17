@@ -19,6 +19,14 @@ namespace OortUnity.Editor
         public const string SmallButton = "oort-small-button";
         public const string PrimaryButton = "oort-primary-button";
 
+        public static class Screenshot
+        {
+            public const string WatermarkOptions = "oort-screenshot-watermark-options";
+            public const string WatermarkPreview = "oort-screenshot-watermark-preview";
+            public const string WatermarkNotice = "oort-screenshot-watermark-notice";
+            public const string WatermarkResetButton = "oort-screenshot-watermark-reset-button";
+        }
+
         public static class PlayerPrefs
         {
             public const string Toolbar = "oort-prefs-toolbar";

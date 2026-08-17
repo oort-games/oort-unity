@@ -20,6 +20,7 @@ Oort > Tools > Game View Screenshot
 - Reset the output directory
 - Automatically generate unique file names
 - Store the output directory per user and per project
+- Add an optional watermark in Play Mode
 
 ### Default Directory
 
@@ -49,6 +50,21 @@ GameView_2.png
 4. Click **Capture Screenshot**.
 5. The screenshot is saved to the selected directory.
 
+### Watermark
+
+Watermarked capture is available in Play Mode. Normal capture remains available when the watermark is disabled.
+
+1. Enable **Watermark**.
+2. Select a PNG or `Texture2D` asset.
+3. Choose one of the nine anchor positions.
+4. Configure the size as a percentage of the captured width.
+5. Configure opacity and edge margin.
+6. Enter Play Mode and click **Capture Screenshot**.
+
+The defaults are bottom right, 15% width, 70% opacity, and a 24px margin. Textures with **Read/Write** disabled are supported.
+
+Click **Reset Watermark** to disable the watermark, clear the selected texture, and restore all watermark options to their defaults.
+
 ### User Settings
 
 The selected output directory is stored in:
@@ -57,7 +73,7 @@ The selected output directory is stored in:
 UserSettings/OortUnityUserSettings.asset
 ```
 
-This setting is local to the current Unity project and user.
+The output directory and watermark settings are local to the current Unity project and user.
 
 ---
 

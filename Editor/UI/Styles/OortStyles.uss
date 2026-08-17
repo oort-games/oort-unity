@@ -84,6 +84,33 @@
     -unity-font-style: bold;
 }
 
+/* Screenshot */
+
+.oort-screenshot-watermark-options {
+    margin-left: 14px;
+    margin-top: 6px;
+}
+
+.oort-screenshot-watermark-preview {
+    margin-top: 6px;
+
+    color: rgb(190, 190, 190);
+    white-space: normal;
+}
+
+.oort-screenshot-watermark-notice {
+    margin-top: 4px;
+
+    color: rgb(220, 180, 90);
+    white-space: normal;
+}
+
+.oort-screenshot-watermark-reset-button {
+    margin-top: 6px;
+
+    align-self: flex-end;
+}
+
 /* PlayerPrefs */
 
 .oort-prefs-toolbar {

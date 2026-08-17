@@ -18,3 +18,15 @@ To run tests from the installed UPM package, add Oort Unity to the
   ]
 }
 ```
+
+### Texture Utility Coverage
+
+Editor tests cover:
+
+- Alpha, opacity, and tint blending
+- Transparent PNG-style alpha preservation
+- Clipping outside the destination texture
+- Readable copies of textures with **Read/Write** disabled
+- Mid-tone color preservation during readable copies and resizing
+- Texture resizing
+- Default Full HD watermark size and bottom-right placement

@@ -146,3 +146,40 @@ GameView_2.png
 ```
 
 `GetUniqueFilePath` can be used when the full path is required instead of only the file name.
+
+---
+
+## TextureUtility
+
+`TextureUtility` provides reusable texture operations for CPU-side processing.
+
+### Features
+
+- Create readable RGBA32 copies of textures with **Read/Write** disabled
+- Resize textures through a temporary `RenderTexture`
+- Blend a readable texture into another readable texture
+- Apply opacity and color tint during alpha blending
+- Clip blending safely when the source extends outside the destination
+
+### Readable Copy and Resize
+
+```csharp
+Texture2D readable = TextureUtility.CreateReadableCopy(source);
+Texture2D resized = TextureUtility.Resize(source, width, height);
+```
+
+`CreateReadableCopy` uses a temporary `RenderTexture` to create an RGBA32 texture that can be accessed from the CPU while preserving whether the source contains sRGB or linear data. This allows imported textures with **Read/Write** disabled to be processed without changing their import settings.
+
+`Resize` accepts textures with **Read/Write** disabled directly, so creating a readable copy before resizing is unnecessary.
+
+The utility is part of the runtime assembly and can be used in player builds, including Android APKs. Texture operations must run on Unity's main thread and require RenderTexture support on the target device.
+
+The returned textures are newly allocated and must be destroyed by the caller. Avoid frequent full-resolution copies on mobile devices because GPU readback and RGBA32 allocations can be expensive.
+
+### Alpha Blend
+
+```csharp
+TextureUtility.Blend(destination, resized, x, y, Color.white, 0.7f);
+```
+
+`Blend` uses `Color32` arrays instead of calling `SetPixel` for every pixel. Blend coordinates use the destination texture's bottom-left corner as `(0, 0)`, and both textures must be readable.

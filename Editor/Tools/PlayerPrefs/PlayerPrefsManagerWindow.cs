@@ -86,7 +86,7 @@ namespace OortUnity.Editor
             var toolbar = new VisualElement();
             toolbar.AddToClassList(OortStyleClasses.PlayerPrefs.Toolbar);
 
-            _searchField = new TextField();
+            _searchField = new TextField("Search") { tooltip = "Search by PlayerPrefs key" };
             _searchField.AddToClassList(OortStyleClasses.PlayerPrefs.Search);
             _searchField.RegisterValueChangedCallback(_ => ApplyFilter());
 
