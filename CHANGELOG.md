@@ -16,7 +16,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Changed the default Game View Screenshot output directory to `Documents/{ProductName}/Screenshots`.
 - Centralized shared UI Toolkit class names used by the editor tool windows.
-- Updated the Documentation PDF Builder window to display the build order from the same document list used to generate the PDF.
 - Simplified editor tool and utility source formatting and made PlayerPrefs sorting controls visually consistent with the list labels.
 
 ### Fixed
