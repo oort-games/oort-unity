@@ -31,7 +31,7 @@ This installs the latest package version from the `main` branch.
 Append a Git tag after `#` to install a specific release.
 
 ```text
-https://github.com/oort-games/oort-unity.git#v0.0.1
+https://github.com/oort-games/oort-unity.git#v0.0.3
 ```
 
 Replace `v0.0.1` with the version you want to install.
@@ -72,6 +72,77 @@ Imported samples are copied to:
 ```text
 Assets/Samples/Oort Unity/<version>/
 ```
+
+## Editor Tools
+
+### Game View Screenshot
+
+Capture the current Game View and save it as a PNG file.
+
+Features include:
+
+- Custom file name and output directory
+- Automatic unique file naming
+- Direct access to the output directory
+- Optional Play Mode watermark
+- Configurable watermark position, size, opacity, and margin
+- Support for watermark textures with Read/Write disabled
+
+Open the tool from:
+
+```text
+Oort > Tools > Game View Screenshot
+```
+
+![Game View Screenshot](./Documentation~/Images/game-view-screenshot.png)
+
+### GameObject Icon Generator
+
+Generate square PNG icons from GameObjects selected in the Hierarchy or Prefabs selected in the Project window.
+
+Features include:
+
+- Automatic 3D and UI object detection
+- Transparent-background preview
+- Configurable resolution, background, and padding
+- Front, back, isometric, and custom views
+- Perspective and orthographic projection
+- Configurable Studio lighting
+- Support for active Scene lights
+- Automatic Renderer bounds calculation
+
+Open the tool from:
+
+```text
+Oort > Tools > GameObject Icon Generator
+```
+
+A sample containing Unlit, URP/Lit, and UI sources is available from the Package Manager.
+
+![GameObject Icon Generator](./Documentation~/Images/gameobject-icon-generator.png)
+
+### PlayerPrefs Manager
+
+Inspect and manage PlayerPrefs stored by the current Unity project.
+
+Features include:
+
+- Search entries by key
+- Sort entries by key or value type
+- Edit Int, Float, and String values
+- Delete individual entries
+- Delete all user-created entries after confirmation
+- Preserve Unity-generated PlayerPrefs entries
+
+Open the tool from:
+
+```text
+Oort > Tools > PlayerPrefs Manager
+```
+
+PlayerPrefs key enumeration is currently supported in the Windows Editor.
+
+![PlayerPrefs Manager](./Documentation~/Images/playerprefs-manager.png)
 
 ## Package Structure
 
