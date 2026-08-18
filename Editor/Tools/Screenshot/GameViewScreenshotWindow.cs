@@ -11,7 +11,7 @@ using UnityEngine.UIElements;
 
 namespace OortUnity.Editor
 {
-    public class GameViewScreenshotWindow : EditorWindow
+    internal sealed class GameViewScreenshotWindow : EditorWindow
     {
         #region Constants
 
@@ -33,6 +33,7 @@ namespace OortUnity.Editor
         private string _fileName = DefaultFileName;
 
         private string _outputDirectory;
+        private GameViewScreenshotSettings _settings;
 
         private TextField _fileNameField;
         private TextField _outputDirectoryField;
@@ -64,6 +65,7 @@ namespace OortUnity.Editor
 
         private void OnEnable()
         {
+            _settings = OortUnityUserSettings.instance.GameViewScreenshot;
             LoadOutputDirectory();
         }
 
@@ -155,19 +157,18 @@ namespace OortUnity.Editor
 
         private VisualElement CreateWatermarkSection()
         {
-            OortUnityUserSettings settings = OortUnityUserSettings.instance;
-
             var section = new VisualElement();
             section.AddToClassList(OortStyleClasses.Section);
             section.Add(new Label("Watermark"));
 
             _watermarkEnabledToggle = new Toggle("Enable Watermark")
             {
-                value = settings.GameViewScreenshotWatermarkEnabled,
+                value = _settings.WatermarkEnabled,
             };
             _watermarkEnabledToggle.RegisterValueChangedCallback(evt =>
             {
-                settings.GameViewScreenshotWatermarkEnabled = evt.newValue;
+                _settings.WatermarkEnabled = evt.newValue;
+                SaveSettings();
                 UpdateWatermarkOptions();
             });
 
@@ -178,19 +179,21 @@ namespace OortUnity.Editor
             {
                 objectType = typeof(Texture2D),
                 allowSceneObjects = false,
-                value = settings.GameViewScreenshotWatermarkTexture,
+                value = _settings.WatermarkTexture,
                 tooltip = "PNG or Texture2D asset used as the watermark",
             };
             _watermarkTextureField.RegisterValueChangedCallback(evt =>
             {
-                settings.GameViewScreenshotWatermarkTexture = evt.newValue as Texture2D;
+                _settings.WatermarkTexture = evt.newValue as Texture2D;
+                SaveSettings();
                 UpdateWatermarkPreview();
             });
 
-            _watermarkAnchorField = new EnumField("Position", settings.GameViewScreenshotWatermarkAnchor);
+            _watermarkAnchorField = new EnumField("Position", _settings.WatermarkAnchor);
             _watermarkAnchorField.RegisterValueChangedCallback(evt =>
             {
-                settings.GameViewScreenshotWatermarkAnchor = (ScreenshotWatermarkAnchor)evt.newValue;
+                _settings.WatermarkAnchor = (ScreenshotWatermarkAnchor)evt.newValue;
+                SaveSettings();
                 UpdateWatermarkPreview();
             });
 
@@ -200,34 +203,37 @@ namespace OortUnity.Editor
                 MaximumWatermarkPercent
             )
             {
-                value = Mathf.RoundToInt(settings.GameViewScreenshotWatermarkSizeRatio * 100f),
+                value = Mathf.RoundToInt(_settings.WatermarkSizeRatio * 100f),
                 showInputField = true,
             };
             _watermarkSizeField.RegisterValueChangedCallback(evt =>
             {
-                settings.GameViewScreenshotWatermarkSizeRatio = evt.newValue / 100f;
+                _settings.WatermarkSizeRatio = evt.newValue / 100f;
+                SaveSettings();
                 UpdateWatermarkPreview();
             });
 
             _watermarkOpacityField = new SliderInt("Opacity (%)", 0, MaximumWatermarkPercent)
             {
-                value = Mathf.RoundToInt(settings.GameViewScreenshotWatermarkOpacity * 100f),
+                value = Mathf.RoundToInt(_settings.WatermarkOpacity * 100f),
                 showInputField = true,
             };
             _watermarkOpacityField.RegisterValueChangedCallback(evt =>
             {
-                settings.GameViewScreenshotWatermarkOpacity = evt.newValue / 100f;
+                _settings.WatermarkOpacity = evt.newValue / 100f;
+                SaveSettings();
                 UpdateWatermarkPreview();
             });
 
             _watermarkMarginField = new IntegerField("Margin (px)")
             {
-                value = settings.GameViewScreenshotWatermarkMargin,
+                value = _settings.WatermarkMargin,
             };
             _watermarkMarginField.RegisterValueChangedCallback(evt =>
             {
-                settings.GameViewScreenshotWatermarkMargin = Mathf.Max(0, evt.newValue);
-                _watermarkMarginField.SetValueWithoutNotify(settings.GameViewScreenshotWatermarkMargin);
+                _settings.WatermarkMargin = Mathf.Max(0, evt.newValue);
+                _watermarkMarginField.SetValueWithoutNotify(_settings.WatermarkMargin);
+                SaveSettings();
                 UpdateWatermarkPreview();
             });
 
@@ -275,32 +281,36 @@ namespace OortUnity.Editor
                 return;
             }
 
-            OortUnityUserSettings settings = OortUnityUserSettings.instance;
-            string textureName = settings.GameViewScreenshotWatermarkTexture != null
-                ? settings.GameViewScreenshotWatermarkTexture.name
+            string textureName = _settings.WatermarkTexture != null
+                ? _settings.WatermarkTexture.name
                 : "No texture selected";
-            string position = ObjectNames.NicifyVariableName(settings.GameViewScreenshotWatermarkAnchor.ToString());
-            int sizePercent = Mathf.RoundToInt(settings.GameViewScreenshotWatermarkSizeRatio * 100f);
-            int opacityPercent = Mathf.RoundToInt(settings.GameViewScreenshotWatermarkOpacity * 100f);
+            string position = ObjectNames.NicifyVariableName(_settings.WatermarkAnchor.ToString());
+            int sizePercent = Mathf.RoundToInt(_settings.WatermarkSizeRatio * 100f);
+            int opacityPercent = Mathf.RoundToInt(_settings.WatermarkOpacity * 100f);
 
             _watermarkPreviewLabel.text =
                 $"{textureName} · {position} · {sizePercent}% width · "
-                + $"{opacityPercent}% opacity · {settings.GameViewScreenshotWatermarkMargin}px margin";
+                + $"{opacityPercent}% opacity · {_settings.WatermarkMargin}px margin";
         }
 
         private void ResetWatermarkOptions()
         {
-            OortUnityUserSettings settings = OortUnityUserSettings.instance;
-            settings.ResetGameViewScreenshotWatermark();
+            _settings.ResetWatermark();
+            SaveSettings();
 
-            _watermarkEnabledToggle?.SetValueWithoutNotify(settings.GameViewScreenshotWatermarkEnabled);
-            _watermarkTextureField?.SetValueWithoutNotify(settings.GameViewScreenshotWatermarkTexture);
-            _watermarkAnchorField?.SetValueWithoutNotify(settings.GameViewScreenshotWatermarkAnchor);
-            _watermarkSizeField?.SetValueWithoutNotify(Mathf.RoundToInt(settings.GameViewScreenshotWatermarkSizeRatio * 100f));
-            _watermarkOpacityField?.SetValueWithoutNotify(Mathf.RoundToInt(settings.GameViewScreenshotWatermarkOpacity * 100f));
-            _watermarkMarginField?.SetValueWithoutNotify(settings.GameViewScreenshotWatermarkMargin);
+            _watermarkEnabledToggle?.SetValueWithoutNotify(_settings.WatermarkEnabled);
+            _watermarkTextureField?.SetValueWithoutNotify(_settings.WatermarkTexture);
+            _watermarkAnchorField?.SetValueWithoutNotify(_settings.WatermarkAnchor);
+            _watermarkSizeField?.SetValueWithoutNotify(Mathf.RoundToInt(_settings.WatermarkSizeRatio * 100f));
+            _watermarkOpacityField?.SetValueWithoutNotify(Mathf.RoundToInt(_settings.WatermarkOpacity * 100f));
+            _watermarkMarginField?.SetValueWithoutNotify(_settings.WatermarkMargin);
 
             UpdateWatermarkOptions();
+        }
+
+        private void SaveSettings()
+        {
+            OortUnityUserSettings.instance.SaveGameViewScreenshotSettings();
         }
 
         #endregion
@@ -309,14 +319,12 @@ namespace OortUnity.Editor
 
         private string GetDefaultOutputDirectory()
         {
-            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            return PathUtility.NormalizePath(Path.Combine(documentsPath, Application.productName, DefaultDirectoryName));
+            return EditorDirectoryUtility.GetDefaultOutputDirectory(DefaultDirectoryName);
         }
 
         private void LoadOutputDirectory()
         {
-            string savedDirectory = OortUnityUserSettings.instance.GameViewScreenshotOutputDirectory;
+            string savedDirectory = _settings.OutputDirectory;
 
             _outputDirectory = string.IsNullOrWhiteSpace(savedDirectory) ? GetDefaultOutputDirectory() : savedDirectory;
         }
@@ -324,13 +332,14 @@ namespace OortUnity.Editor
         private void SetOutputDirectory(string directory)
         {
             _outputDirectory = PathUtility.NormalizePath(directory);
-
-            OortUnityUserSettings.instance.GameViewScreenshotOutputDirectory = _outputDirectory;
+            _settings.OutputDirectory = _outputDirectory;
+            SaveSettings();
         }
 
         private void ResetOutputDirectory()
         {
-            OortUnityUserSettings.instance.GameViewScreenshotOutputDirectory = string.Empty;
+            _settings.OutputDirectory = string.Empty;
+            SaveSettings();
 
             _outputDirectory = GetDefaultOutputDirectory();
             _outputDirectoryField?.SetValueWithoutNotify(_outputDirectory);
@@ -338,47 +347,22 @@ namespace OortUnity.Editor
 
         private void BrowseOutputDirectory()
         {
-            string selectedPath = EditorUtility.OpenFolderPanel(
+            if (!EditorDirectoryUtility.TryBrowseDirectory(
                 "Select Screenshot Directory",
                 _outputDirectory,
-                string.Empty
-            );
-
-            if (string.IsNullOrEmpty(selectedPath))
+                out string selectedPath
+            ))
             {
                 return;
             }
 
             SetOutputDirectory(selectedPath);
-
             _outputDirectoryField?.SetValueWithoutNotify(_outputDirectory);
         }
 
         private void OpenOutputDirectory()
         {
-            if (string.IsNullOrWhiteSpace(_outputDirectory))
-            {
-                Debug.LogWarning("[Game View Screenshot] Save directory is empty.");
-
-                return;
-            }
-
-            FileUtility.CreateDirectory(_outputDirectory);
-
-            try
-            {
-                var startInfo = new System.Diagnostics.ProcessStartInfo
-                {
-                    FileName = _outputDirectory,
-                    UseShellExecute = true,
-                };
-                System.Diagnostics.Process.Start(startInfo);
-            }
-            catch (Exception exception)
-            {
-                Debug.LogException(exception);
-                EditorUtility.DisplayDialog(WindowTitle, $"Failed to open the save directory.\n\n{exception.Message}", "OK");
-            }
+            EditorDirectoryUtility.OpenDirectory(WindowTitle, _outputDirectory);
         }
 
         #endregion
@@ -392,9 +376,7 @@ namespace OortUnity.Editor
                 return;
             }
 
-            OortUnityUserSettings settings = OortUnityUserSettings.instance;
-
-            if (!settings.GameViewScreenshotWatermarkEnabled)
+            if (!_settings.WatermarkEnabled)
             {
                 CaptureScreenshotWithoutWatermark();
                 return;
@@ -411,7 +393,7 @@ namespace OortUnity.Editor
                 return;
             }
 
-            if (settings.GameViewScreenshotWatermarkTexture == null)
+            if (_settings.WatermarkTexture == null)
             {
                 EditorUtility.DisplayDialog(WindowTitle, "Select a watermark texture before capturing.", "OK");
                 return;
@@ -426,11 +408,11 @@ namespace OortUnity.Editor
             FileUtility.CreateDirectory(_outputDirectory);
 
             string filePath = CreateScreenshotPath();
-            Texture2D watermark = settings.GameViewScreenshotWatermarkTexture;
-            ScreenshotWatermarkAnchor anchor = settings.GameViewScreenshotWatermarkAnchor;
-            float sizeRatio = settings.GameViewScreenshotWatermarkSizeRatio;
-            float opacity = settings.GameViewScreenshotWatermarkOpacity;
-            int margin = settings.GameViewScreenshotWatermarkMargin;
+            Texture2D watermark = _settings.WatermarkTexture;
+            ScreenshotWatermarkAnchor anchor = _settings.WatermarkAnchor;
+            float sizeRatio = _settings.WatermarkSizeRatio;
+            float opacity = _settings.WatermarkOpacity;
+            int margin = _settings.WatermarkMargin;
 
             SetCaptureInProgress(true);
 
@@ -578,27 +560,18 @@ namespace OortUnity.Editor
             int centerY = (screenshotHeight - watermarkHeight) / 2;
             int top = screenshotHeight - watermarkHeight - margin;
 
-            switch (anchor)
+            return anchor switch
             {
-                case ScreenshotWatermarkAnchor.TopLeft:
-                    return new Vector2Int(left, top);
-                case ScreenshotWatermarkAnchor.TopCenter:
-                    return new Vector2Int(centerX, top);
-                case ScreenshotWatermarkAnchor.TopRight:
-                    return new Vector2Int(right, top);
-                case ScreenshotWatermarkAnchor.MiddleLeft:
-                    return new Vector2Int(left, centerY);
-                case ScreenshotWatermarkAnchor.Center:
-                    return new Vector2Int(centerX, centerY);
-                case ScreenshotWatermarkAnchor.MiddleRight:
-                    return new Vector2Int(right, centerY);
-                case ScreenshotWatermarkAnchor.BottomLeft:
-                    return new Vector2Int(left, bottom);
-                case ScreenshotWatermarkAnchor.BottomCenter:
-                    return new Vector2Int(centerX, bottom);
-                default:
-                    return new Vector2Int(right, bottom);
-            }
+                ScreenshotWatermarkAnchor.TopLeft => new Vector2Int(left, top),
+                ScreenshotWatermarkAnchor.TopCenter => new Vector2Int(centerX, top),
+                ScreenshotWatermarkAnchor.TopRight => new Vector2Int(right, top),
+                ScreenshotWatermarkAnchor.MiddleLeft => new Vector2Int(left, centerY),
+                ScreenshotWatermarkAnchor.Center => new Vector2Int(centerX, centerY),
+                ScreenshotWatermarkAnchor.MiddleRight => new Vector2Int(right, centerY),
+                ScreenshotWatermarkAnchor.BottomLeft => new Vector2Int(left, bottom),
+                ScreenshotWatermarkAnchor.BottomCenter => new Vector2Int(centerX, bottom),
+                _ => new Vector2Int(right, bottom),
+            };
         }
 
         private void SetCaptureInProgress(bool isCapturing)

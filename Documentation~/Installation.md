@@ -33,7 +33,7 @@ To install a specific release, append the release tag to the Git URL.
 Example:
 
 ```text
-https://github.com/oort-games/oort-unity.git#v0.0.2
+https://github.com/oort-games/oort-unity.git#v0.0.3
 ```
 
 ## Samples
@@ -43,4 +43,4 @@ Oort Unity samples are distributed through the package `Samples~` directory and 
 1. Open Package Manager.
 2. Select **Oort Unity**.
 3. Open the **Samples** section.
-4. Import **Basic Sample**.
+4. Import **GameObject Icon Generator Sample**.

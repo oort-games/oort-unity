@@ -1,7 +1,8 @@
 {
     "name": "Oortgamestudio.Oortunity.Editor",
     "references": [
-      "Oortgamestudio.Oortunity"
+      "Oortgamestudio.Oortunity",
+      "Unity.ugui"
     ],
     "includePlatforms": [
         "Editor"

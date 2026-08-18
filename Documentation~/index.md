@@ -1,6 +1,6 @@
 # Oort Unity
 
-> Version: **0.0.2**
+> Version: **0.0.3**
 > Package: `com.oortgamestudio.oortunity`  
 > Unity: **2022.3 or later**
 

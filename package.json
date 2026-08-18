@@ -1,17 +1,18 @@
 {
   "name": "com.oortgamestudio.oortunity",
   "displayName": "Oort Unity",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "unity": "2022.3",
   "description": "Oort Unity is a Unity Package Manager (UPM) package that provides reusable runtime components, editor tools, utilities, and sample content for Unity projects",
   "dependencies": {
-    "com.unity.test-framework": "1.1.33"
+    "com.unity.test-framework": "1.1.33",
+    "com.unity.ugui": "1.0.0"
   },
   "samples": [
     {
-      "displayName": "Basic Sample",
-      "description": "Oort Unity \uae30\ubcf8 \uc0ac\uc6a9 \uc608\uc81c\uc785\ub2c8\ub2e4.",
-      "path": "Samples~/Basic Sample"
+      "displayName": "GameObject Icon Generator Sample",
+      "description": "Includes Unlit, URP/Lit, and UI sources for the GameObject Icon Generator.",
+      "path": "Samples~/GameObject Icon Generator Sample"
     }
   ],
   "author": {

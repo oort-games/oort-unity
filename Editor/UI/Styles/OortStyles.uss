@@ -84,6 +84,65 @@
     -unity-font-style: bold;
 }
 
+/* Documentation */
+
+.oort-documentation-build-order-title {
+    margin-bottom: 7px;
+
+    -unity-font-style: bold;
+}
+
+.oort-documentation-document-list {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+
+    background-color: rgb(44, 44, 44);
+
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgb(62, 62, 62);
+    border-right-color: rgb(62, 62, 62);
+    border-top-color: rgb(62, 62, 62);
+    border-bottom-color: rgb(62, 62, 62);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.oort-documentation-document-row {
+    height: 23px;
+
+    flex-direction: row;
+    align-items: center;
+}
+
+.oort-documentation-document-order {
+    width: 28px;
+    min-width: 28px;
+
+    color: rgb(145, 145, 145);
+    -unity-text-align: middle-right;
+}
+
+.oort-documentation-document-name {
+    margin-left: 10px;
+
+    flex-grow: 1;
+    color: rgb(215, 215, 215);
+}
+
+.oort-documentation-status {
+    margin-top: 12px;
+
+    color: rgb(185, 185, 185);
+    white-space: normal;
+}
+
 /* Screenshot */
 
 .oort-screenshot-watermark-options {
@@ -109,6 +168,68 @@
     margin-top: 6px;
 
     align-self: flex-end;
+}
+
+/* GameObject Icon Generator */
+
+.oort-icon-source-type {
+    margin-top: 5px;
+
+    color: rgb(180, 180, 180);
+}
+
+.oort-icon-preview-container {
+    width: 256px;
+    height: 256px;
+    margin-top: 7px;
+
+    position: relative;
+    align-self: center;
+
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgb(78, 78, 78);
+    border-right-color: rgb(78, 78, 78);
+    border-top-color: rgb(78, 78, 78);
+    border-bottom-color: rgb(78, 78, 78);
+}
+
+.oort-icon-preview-layer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.oort-icon-preview-message {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    top: 0;
+    bottom: 0;
+
+    align-items: center;
+    justify-content: center;
+
+    color: rgb(225, 225, 225);
+    -unity-text-align: middle-center;
+    white-space: normal;
+}
+
+.oort-icon-reset-button {
+    margin-top: 6px;
+
+    align-self: flex-end;
+}
+
+.oort-icon-status {
+    margin-top: 8px;
+
+    color: rgb(185, 185, 185);
+    white-space: normal;
 }
 
 /* PlayerPrefs */

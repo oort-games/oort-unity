@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 namespace OortUnity.Editor
 {
-    public class PlayerPrefsManagerWindow : EditorWindow
+    internal sealed class PlayerPrefsManagerWindow : EditorWindow
     {
         private enum SortColumn
         {

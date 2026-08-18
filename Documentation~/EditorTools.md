@@ -1,5 +1,66 @@
 # Editor Tools
 
+## GameObject Icon Generator
+
+GameObject Icon Generator converts a Hierarchy GameObject or Project Prefab into a square PNG icon without modifying the source object.
+
+### Open
+
+```text
+Oort > Tools > GameObject Icon Generator
+```
+
+### Features
+
+- Select a Hierarchy GameObject or Project Prefab
+- Use the current Hierarchy or Project selection
+- Automatically detect UI objects through `RectTransform` and `CanvasRenderer`
+- Preview transparent areas over a checkerboard
+- Choose 64, 128, 256, or 512px output, or enter a custom resolution
+- Use a transparent or solid-color background
+- Configure proportional padding
+- Use front, back, isometric, or custom rotation for 3D objects
+- Use perspective or orthographic projection for 3D objects
+- Configure studio main and fill light rotation, color, and intensity for 3D objects
+- Use active Directional, Point, and Spot Lights from the source Scene
+- Automatically frame enabled child Renderers
+- Automatically generate unique PNG file names
+
+### Usage
+
+1. Open **GameObject Icon Generator**.
+2. Assign a GameObject or Prefab, or select one and click **Use Selection**.
+3. Confirm whether the source was detected as **3D** or **UI**.
+4. Adjust the live preview and render settings.
+5. Configure the file name and save directory.
+6. Click **Generate PNG Icon**.
+
+The default output directory is:
+
+```text
+Documents/{ProductName}/Icons
+```
+
+The last output and render settings are stored in `UserSettings/OortUnityUserSettings.asset`.
+
+### Rendering Notes
+
+3D sources are copied into a temporary Preview Scene and framed from their enabled Renderer bounds. The default view is Front, with Back, Isometric, and Custom rotations available. Studio lighting uses configurable main and fill Directional Lights without shadows. Scene lighting copies enabled Directional, Point, and Spot Lights from the source Scene; Prefab Assets use the active Scene. Point and Spot Light transforms are preserved relative to the source object, while baked lighting, ambient settings, and reflection probes are not copied. UI sources are copied under a temporary Screen Space - Camera Canvas and rendered from their current RectTransform size. Temporary cameras, lights, clones, RenderTextures, and readable textures are cleaned up after each render.
+
+The source hierarchy is rendered independently. Parent `Mask`, `CanvasGroup`, or `LayoutGroup` effects that are not part of the selected hierarchy can therefore look different. Particle systems, trails, and animations are captured in their current static state. URP rendering has been verified; HDRP-specific output has not been validated.
+
+### Sample
+
+Import **GameObject Icon Generator Sample** from Package Manager and open:
+
+```text
+Scenes/GameObjectIconGeneratorSample.unity
+```
+
+The scene contains Unlit and URP/Lit 3D Prefab sources, a Directional Light for Scene lighting, and a UI Image/Button/Text source.
+
+---
+
 ## Game View Screenshot
 
 Game View Screenshot captures the current Unity Game View and saves it as a PNG file.

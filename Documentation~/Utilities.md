@@ -149,6 +149,39 @@ GameView_2.png
 
 ---
 
+## GameObjectBoundsUtility
+
+`GameObjectBoundsUtility` provides runtime helpers for identifying UI hierarchies and calculating GameObject bounds.
+
+### Features
+
+- Detect GameObjects with a `RectTransform` and child `CanvasRenderer`
+- Combine enabled Renderer bounds in an active GameObject hierarchy
+- Read a UI GameObject's `RectTransform` size
+
+### Renderer Bounds
+
+```csharp
+if (GameObjectBoundsUtility.TryGetRendererBounds(source, out Bounds bounds))
+{
+    Vector3 center = bounds.center;
+    Vector3 size = bounds.size;
+}
+```
+
+Inactive GameObjects and disabled Renderers are excluded from the combined bounds.
+
+### UI Size
+
+```csharp
+bool isUI = GameObjectBoundsUtility.IsUIObject(source);
+bool hasSize = GameObjectBoundsUtility.TryGetRectSize(source, out Vector2 size);
+```
+
+`TryGetRectSize` updates Unity canvases before reading the `RectTransform`. The utility is part of the runtime assembly and can be used in player builds.
+
+---
+
 ## TextureUtility
 
 `TextureUtility` provides reusable texture operations for CPU-side processing.

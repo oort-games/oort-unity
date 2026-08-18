@@ -19,12 +19,32 @@ namespace OortUnity.Editor
         public const string SmallButton = "oort-small-button";
         public const string PrimaryButton = "oort-primary-button";
 
+        public static class Documentation
+        {
+            public const string BuildOrderTitle = "oort-documentation-build-order-title";
+            public const string DocumentList = "oort-documentation-document-list";
+            public const string DocumentRow = "oort-documentation-document-row";
+            public const string DocumentOrder = "oort-documentation-document-order";
+            public const string DocumentName = "oort-documentation-document-name";
+            public const string Status = "oort-documentation-status";
+        }
+
         public static class Screenshot
         {
             public const string WatermarkOptions = "oort-screenshot-watermark-options";
             public const string WatermarkPreview = "oort-screenshot-watermark-preview";
             public const string WatermarkNotice = "oort-screenshot-watermark-notice";
             public const string WatermarkResetButton = "oort-screenshot-watermark-reset-button";
+        }
+
+        public static class Icon
+        {
+            public const string SourceType = "oort-icon-source-type";
+            public const string PreviewContainer = "oort-icon-preview-container";
+            public const string PreviewLayer = "oort-icon-preview-layer";
+            public const string PreviewMessage = "oort-icon-preview-message";
+            public const string ResetButton = "oort-icon-reset-button";
+            public const string Status = "oort-icon-status";
         }
 
         public static class PlayerPrefs
