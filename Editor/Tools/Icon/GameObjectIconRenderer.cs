@@ -383,7 +383,7 @@ namespace OortUnity.Editor
             targetLight.spotAngle = sourceLight.spotAngle;
             targetLight.innerSpotAngle = sourceLight.innerSpotAngle;
             targetLight.cookie = sourceLight.cookie;
-#if UNITY_6000_0_OR_NEWER
+#if UNITY_6000_3_OR_NEWER
             targetLight.cookieSize2D = sourceLight.cookieSize2D;
 #else
             targetLight.cookieSize = sourceLight.cookieSize;
