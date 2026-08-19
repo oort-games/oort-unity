@@ -43,7 +43,7 @@ You can also add Oort Unity directly to your project's `Packages/manifest.json`.
 ```json
 {
   "dependencies": {
-    "com.oortgamestudio.oortunity": "https://github.com/oort-games/oort-unity.git#v0.0.1"
+    "com.oortgamestudio.oortunity": "https://github.com/oort-games/oort-unity.git#v0.0.4"
   }
 }
 ```
