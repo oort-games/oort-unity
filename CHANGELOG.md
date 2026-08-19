@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4] - 2026-08-19
+
+### Added
+
+- Added SpriteRenderer-only 2D source detection and orthographic rendering to GameObject Icon Generator.
+- Added a 2D Sprite source to the GameObject Icon Generator Sample.
+- Added **Oort Unity** Preferences for editing Game View Screenshot and GameObject Icon Generator settings, including per-tool resets, a confirmed global reset, and an `Oort > Preferences` shortcut.
+
+### Changed
+
+- Updated open Game View Screenshot and GameObject Icon Generator windows immediately when values change in Oort Unity Preferences.
+
+### Fixed
+
+- Fixed Light cookie-size API compatibility by using `cookieSize2D` on Unity 6000.3 or later and `cookieSize` on earlier Unity versions.
+
 ## [0.0.3] - 2026-08-19
 
 ### Added

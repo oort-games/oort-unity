@@ -20,7 +20,6 @@ namespace OortUnity.Editor
         private const string HeaderTitle = "Game View Screenshot";
 
         private const string DefaultFileName = "GameView";
-        private const string DefaultDirectoryName = "Screenshots";
 
         private const int MinimumWatermarkPercent = 1;
         private const int MaximumWatermarkPercent = 100;
@@ -65,8 +64,15 @@ namespace OortUnity.Editor
 
         private void OnEnable()
         {
+            OortUnityUserSettings.PreferencesChanged += ReloadPreferences;
             _settings = OortUnityUserSettings.instance.GameViewScreenshot;
+            _settings.Validate();
             LoadOutputDirectory();
+        }
+
+        private void OnDisable()
+        {
+            OortUnityUserSettings.PreferencesChanged -= ReloadPreferences;
         }
 
         public void CreateGUI()
@@ -84,6 +90,14 @@ namespace OortUnity.Editor
         #endregion
 
         #region UI
+
+        private void ReloadPreferences()
+        {
+            _settings = OortUnityUserSettings.instance.GameViewScreenshot;
+            _settings.Validate();
+            LoadOutputDirectory();
+            CreateGUI();
+        }
 
         private VisualElement CreateContent()
         {
@@ -319,7 +333,9 @@ namespace OortUnity.Editor
 
         private string GetDefaultOutputDirectory()
         {
-            return EditorDirectoryUtility.GetDefaultOutputDirectory(DefaultDirectoryName);
+            return EditorDirectoryUtility.GetDefaultOutputDirectory(
+                GameViewScreenshotSettings.DefaultDirectoryName
+            );
         }
 
         private void LoadOutputDirectory()

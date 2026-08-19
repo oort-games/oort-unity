@@ -8,6 +8,7 @@ namespace OortUnity.Editor
     internal sealed class GameObjectIconGeneratorSettings
     {
         public const string DefaultFileName = "GameObjectIcon";
+        public const string DefaultDirectoryName = "Icons";
 
         public string OutputDirectory;
         public string FileName = DefaultFileName;
@@ -22,6 +23,14 @@ namespace OortUnity.Editor
 
             RenderSettings ??= new IconRenderSettings();
             RenderSettings.Validate();
+        }
+
+        public void Reset()
+        {
+            OutputDirectory = string.Empty;
+            FileName = DefaultFileName;
+            RenderSettings ??= new IconRenderSettings();
+            RenderSettings.Reset();
         }
     }
 }

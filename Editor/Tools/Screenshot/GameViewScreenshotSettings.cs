@@ -21,6 +21,7 @@ namespace OortUnity.Editor
     [Serializable]
     internal sealed class GameViewScreenshotSettings
     {
+        public const string DefaultDirectoryName = "Screenshots";
         public const float DefaultWatermarkSizeRatio = 0.15f;
         public const float DefaultWatermarkOpacity = 0.7f;
         public const int DefaultWatermarkMargin = 24;
@@ -49,6 +50,12 @@ namespace OortUnity.Editor
             WatermarkSizeRatio = DefaultWatermarkSizeRatio;
             WatermarkOpacity = DefaultWatermarkOpacity;
             WatermarkMargin = DefaultWatermarkMargin;
+        }
+
+        public void Reset()
+        {
+            OutputDirectory = string.Empty;
+            ResetWatermark();
         }
     }
 }

@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using OortUnity.Editor;
 using OortUnity.Utilities;
+using UnityEditor;
 using UnityEngine;
 
 namespace OortUnity.Tests
@@ -146,6 +147,41 @@ namespace OortUnity.Tests
 
             Assert.AreEqual(GameObjectIconGeneratorSettings.DefaultFileName, settings.FileName);
             Assert.IsNotNull(settings.RenderSettings);
+        }
+
+        [Test]
+        public void GeneratorSettings_ResetRestoresDefaultsWithoutReplacingRenderSettings()
+        {
+            var settings = new GameObjectIconGeneratorSettings
+            {
+                OutputDirectory = "Custom/Icons",
+                FileName = "CustomIcon",
+                RenderSettings = new IconRenderSettings
+                {
+                    Resolution = 1024,
+                    ViewPreset = IconViewPreset.Back,
+                    Rotation = new Vector3(0f, 180f, 0f),
+                },
+            };
+            IconRenderSettings renderSettings = settings.RenderSettings;
+
+            settings.Reset();
+
+            Assert.IsEmpty(settings.OutputDirectory);
+            Assert.AreEqual(GameObjectIconGeneratorSettings.DefaultFileName, settings.FileName);
+            Assert.AreSame(renderSettings, settings.RenderSettings);
+            Assert.AreEqual(IconRenderSettings.DefaultResolution, renderSettings.Resolution);
+            Assert.AreEqual(IconViewPreset.Front, renderSettings.ViewPreset);
+            Assert.AreEqual(Vector3.zero, renderSettings.Rotation);
+        }
+
+        [Test]
+        public void PreferencesProvider_IsRegisteredInUserPreferences()
+        {
+            SettingsProvider provider = OortUnityPreferencesProvider.CreateSettingsProvider();
+
+            Assert.AreEqual("Preferences/Oort Unity", provider.settingsPath);
+            Assert.AreEqual(SettingsScope.User, provider.scope);
         }
 
         [Test]

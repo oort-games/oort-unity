@@ -11,6 +11,7 @@ namespace OortUnity.Tests
         {
             var settings = new GameViewScreenshotSettings
             {
+                OutputDirectory = "Custom/Screenshots",
                 WatermarkEnabled = true,
                 WatermarkAnchor = ScreenshotWatermarkAnchor.TopLeft,
                 WatermarkSizeRatio = 2f,
@@ -32,6 +33,13 @@ namespace OortUnity.Tests
             Assert.AreEqual(GameViewScreenshotSettings.DefaultWatermarkSizeRatio, settings.WatermarkSizeRatio);
             Assert.AreEqual(GameViewScreenshotSettings.DefaultWatermarkOpacity, settings.WatermarkOpacity);
             Assert.AreEqual(GameViewScreenshotSettings.DefaultWatermarkMargin, settings.WatermarkMargin);
+
+            settings.OutputDirectory = "Custom/Screenshots";
+            settings.WatermarkEnabled = true;
+            settings.Reset();
+
+            Assert.IsEmpty(settings.OutputDirectory);
+            Assert.IsFalse(settings.WatermarkEnabled);
         }
 
         [Test]

@@ -18,8 +18,6 @@ namespace OortUnity.Editor
 
         private const string MenuPath = "Oort/Tools/GameObject Icon Generator";
         private const string WindowTitle = "GameObject Icon Generator";
-        private const string DefaultFileName = "GameObjectIcon";
-        private const string DefaultDirectoryName = "Icons";
         private const int PreviewTextureSize = 256;
 
         private static readonly List<string> ResolutionChoices = new List<string>
@@ -87,15 +85,8 @@ namespace OortUnity.Editor
 
         private void OnEnable()
         {
-            _settings = OortUnityUserSettings.instance.GameObjectIconGenerator;
-            _renderSettings = _settings.RenderSettings;
-            _renderSettings.Validate();
-            _fileName = string.IsNullOrWhiteSpace(_settings.FileName)
-                ? DefaultFileName
-                : _settings.FileName;
-            _outputDirectory = string.IsNullOrWhiteSpace(_settings.OutputDirectory)
-                ? GetDefaultOutputDirectory()
-                : _settings.OutputDirectory;
+            OortUnityUserSettings.PreferencesChanged += ReloadPreferences;
+            LoadSettings();
 
             if (_source == null)
             {
@@ -105,6 +96,7 @@ namespace OortUnity.Editor
 
         private void OnDisable()
         {
+            OortUnityUserSettings.PreferencesChanged -= ReloadPreferences;
             SaveRenderSettings();
             DestroyTexture(ref _previewTexture);
             DestroyTexture(ref _checkerboardTexture);
@@ -130,6 +122,25 @@ namespace OortUnity.Editor
         #endregion
 
         #region UI
+
+        private void ReloadPreferences()
+        {
+            LoadSettings();
+            CreateGUI();
+        }
+
+        private void LoadSettings()
+        {
+            _settings = OortUnityUserSettings.instance.GameObjectIconGenerator;
+            _settings.Validate();
+            _renderSettings = _settings.RenderSettings;
+            _fileName = string.IsNullOrWhiteSpace(_settings.FileName)
+                ? GameObjectIconGeneratorSettings.DefaultFileName
+                : _settings.FileName;
+            _outputDirectory = string.IsNullOrWhiteSpace(_settings.OutputDirectory)
+                ? GetDefaultOutputDirectory()
+                : _settings.OutputDirectory;
+        }
 
         private VisualElement CreateContent()
         {
@@ -506,7 +517,11 @@ namespace OortUnity.Editor
         {
             string previousSourceName = _source != null ? _source.name : null;
             bool useSourceName = string.IsNullOrWhiteSpace(_fileName)
-                || string.Equals(_fileName, DefaultFileName, StringComparison.Ordinal)
+                || string.Equals(
+                    _fileName,
+                    GameObjectIconGeneratorSettings.DefaultFileName,
+                    StringComparison.Ordinal
+                )
                 || string.Equals(_fileName, previousSourceName, StringComparison.Ordinal);
 
             _source = source;
@@ -643,21 +658,7 @@ namespace OortUnity.Editor
 
         private void ResetRenderSettings()
         {
-            IconRenderSettings defaults = new IconRenderSettings();
-            _renderSettings.Resolution = defaults.Resolution;
-            _renderSettings.BackgroundMode = defaults.BackgroundMode;
-            _renderSettings.BackgroundColor = defaults.BackgroundColor;
-            _renderSettings.Padding = defaults.Padding;
-            _renderSettings.ViewPreset = defaults.ViewPreset;
-            _renderSettings.Rotation = defaults.Rotation;
-            _renderSettings.Projection = defaults.Projection;
-            _renderSettings.LightingSource = defaults.LightingSource;
-            _renderSettings.MainLightRotation = defaults.MainLightRotation;
-            _renderSettings.MainLightColor = defaults.MainLightColor;
-            _renderSettings.MainLightIntensity = defaults.MainLightIntensity;
-            _renderSettings.FillLightRotation = defaults.FillLightRotation;
-            _renderSettings.FillLightColor = defaults.FillLightColor;
-            _renderSettings.FillLightIntensity = defaults.FillLightIntensity;
+            _renderSettings.Reset();
 
             UpdateRenderSettingFields();
             SaveAndRefreshPreview();
@@ -788,7 +789,9 @@ namespace OortUnity.Editor
 
         private string GetDefaultOutputDirectory()
         {
-            return EditorDirectoryUtility.GetDefaultOutputDirectory(DefaultDirectoryName);
+            return EditorDirectoryUtility.GetDefaultOutputDirectory(
+                GameObjectIconGeneratorSettings.DefaultDirectoryName
+            );
         }
 
         private void SetOutputDirectory(string directory)

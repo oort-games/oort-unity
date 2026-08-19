@@ -31,6 +31,7 @@ Editor tests cover:
 - Texture resizing
 - Default Full HD watermark size and bottom-right placement
 - Screenshot setting validation and watermark reset defaults
+- Oort Unity Preferences provider registration
 
 ### GameObject Icon Generator Coverage
 
@@ -41,3 +42,4 @@ Editor tests cover:
 - Proportional framing padding
 - Resolution limits and 3D view preset validation
 - Icon Generator setting defaults and lighting configuration copies
+- Icon Generator full-setting reset behavior

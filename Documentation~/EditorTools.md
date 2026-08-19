@@ -1,5 +1,35 @@
 # Editor Tools
 
+## Preferences
+
+Open Unity Preferences and select **Oort Unity** to edit the user settings shared by the editor tools.
+
+```text
+Edit > Preferences > Oort Unity
+```
+
+You can also open the same page directly from:
+
+```text
+Oort > Preferences
+```
+
+![Oort Unity Preferences](Images/preferences.png)
+
+The Preferences page provides the following settings:
+
+- Game View Screenshot output directory and watermark options
+- GameObject Icon Generator output, render, camera, and lighting options
+- Per-tool reset buttons and a reset button for all Oort Unity settings
+
+These values are stored per user and per project in:
+
+```text
+UserSettings/OortUnityUserSettings.asset
+```
+
+---
+
 ## GameObject Icon Generator
 
 GameObject Icon Generator converts a Hierarchy GameObject or Project Prefab into a square PNG icon without modifying the source object.
@@ -9,6 +39,8 @@ GameObject Icon Generator converts a Hierarchy GameObject or Project Prefab into
 ```text
 Oort > Tools > GameObject Icon Generator
 ```
+
+![GameObject Icon Generator](Images/gameobject-icon-generator.png)
 
 ### Features
 
@@ -70,6 +102,8 @@ Game View Screenshot captures the current Unity Game View and saves it as a PNG 
 ```text
 Oort > Tools > Game View Screenshot
 ```
+
+![Game View Screenshot](Images/game-view-screenshot.png)
 
 ### Features
 
@@ -148,6 +182,8 @@ PlayerPrefs Manager provides an editor interface for inspecting and modifying Pl
 Oort > Tools > PlayerPrefs Manager
 ```
 
+![PlayerPrefs Manager](Images/playerprefs-manager.png)
+
 ### Features
 
 - View PlayerPrefs keys
@@ -171,7 +207,7 @@ Oort > Tools > PlayerPrefs Manager
 1. Click **Key** or **Type** in the list header.
 2. Click the same header again to reverse the sort direction.
 
-The active sort column displays `▲` for ascending order or `▼` for descending order. Entries are sorted by key in ascending order by default, and the selected sort remains active when searching or refreshing the list.
+The active sort column displays an upward indicator for ascending order or a downward indicator for descending order. Entries are sorted by key in ascending order by default, and the selected sort remains active when searching or refreshing the list.
 
 ### Edit a Value
 

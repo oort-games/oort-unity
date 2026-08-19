@@ -96,6 +96,26 @@ namespace OortUnity.Editor
             };
         }
 
+        public void Reset()
+        {
+            var defaults = new IconRenderSettings();
+
+            Resolution = defaults.Resolution;
+            BackgroundMode = defaults.BackgroundMode;
+            BackgroundColor = defaults.BackgroundColor;
+            Padding = defaults.Padding;
+            ViewPreset = defaults.ViewPreset;
+            Rotation = defaults.Rotation;
+            Projection = defaults.Projection;
+            LightingSource = defaults.LightingSource;
+            MainLightRotation = defaults.MainLightRotation;
+            MainLightColor = defaults.MainLightColor;
+            MainLightIntensity = defaults.MainLightIntensity;
+            FillLightRotation = defaults.FillLightRotation;
+            FillLightColor = defaults.FillLightColor;
+            FillLightIntensity = defaults.FillLightIntensity;
+        }
+
         public static Vector3 GetPresetRotation(IconViewPreset preset)
         {
             return preset switch
