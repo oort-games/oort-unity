@@ -31,7 +31,7 @@ This installs the latest package version from the `main` branch.
 Append a Git tag after `#` to install a specific release.
 
 ```text
-https://github.com/oort-games/oort-unity.git#v0.0.3
+https://github.com/oort-games/oort-unity.git#v0.0.4
 ```
 
 Replace `v0.0.1` with the version you want to install.
@@ -74,6 +74,36 @@ Assets/Samples/Oort Unity/<version>/
 ```
 
 ## Editor Tools
+
+### Preferences
+
+Configure Oort Unity editor tool settings from Unity Preferences.
+
+Available settings include:
+
+- Game View Screenshot output directory and watermark options
+- GameObject Icon Generator output, render, camera, and lighting options
+- Per-tool reset controls
+- Global reset with confirmation
+- Automatic synchronization with open tool windows
+
+Open Preferences from either location:
+
+```text
+Edit > Preferences > Oort Unity
+```
+
+```text
+Oort > Preferences
+```
+
+Settings are stored per user and per project in:
+
+```text
+UserSettings/OortUnityUserSettings.asset
+```
+
+![Oort Unity Preferences](./Documentation~/Images/preferences.png)
 
 ### Game View Screenshot
 
