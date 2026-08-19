@@ -539,10 +539,11 @@ namespace OortUnity.Editor
             }
 
             bool isUI = GameObjectBoundsUtility.IsUIObject(_source);
-            string sourceKind = isUI ? "UI" : "3D";
+            bool is2D = !isUI && GameObjectBoundsUtility.Is2DObject(_source);
+            string sourceKind = isUI ? "UI" : is2D ? "2D" : "3D";
             string sourceLocation = EditorUtility.IsPersistent(_source) ? "Prefab Asset" : "Hierarchy";
             _sourceTypeLabel.text = $"Detected: {sourceKind} · {sourceLocation}";
-            Set3DControlsEnabled(!isUI);
+            Set3DControlsEnabled(!isUI && !is2D);
         }
 
         private void Set3DControlsEnabled(bool enabled)

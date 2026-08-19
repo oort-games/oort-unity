@@ -38,6 +38,57 @@ namespace OortUnity.Tests
         }
 
         [Test]
+        public void Is2DObject_ReturnsTrue_ForSpriteRendererHierarchy()
+        {
+            var root = new GameObject("2D Source");
+            var child = new GameObject("Sprite", typeof(SpriteRenderer));
+
+            try
+            {
+                child.transform.SetParent(root.transform);
+
+                Assert.IsTrue(GameObjectBoundsUtility.Is2DObject(root));
+            }
+            finally
+            {
+                Object.DestroyImmediate(root);
+            }
+        }
+
+        [Test]
+        public void Is2DObject_ReturnsFalse_ForMixedRendererHierarchy()
+        {
+            var root = new GameObject("Mixed Source", typeof(SpriteRenderer));
+            GameObject mesh = GameObject.CreatePrimitive(PrimitiveType.Cube);
+
+            try
+            {
+                mesh.transform.SetParent(root.transform);
+
+                Assert.IsFalse(GameObjectBoundsUtility.Is2DObject(root));
+            }
+            finally
+            {
+                Object.DestroyImmediate(root);
+            }
+        }
+
+        [Test]
+        public void Is2DObject_ReturnsFalse_ForUIObject()
+        {
+            var source = new GameObject("UI Source", typeof(RectTransform), typeof(CanvasRenderer));
+
+            try
+            {
+                Assert.IsFalse(GameObjectBoundsUtility.Is2DObject(source));
+            }
+            finally
+            {
+                Object.DestroyImmediate(source);
+            }
+        }
+
+        [Test]
         public void TryGetRendererBounds_CombinesEnabledChildRenderers()
         {
             var root = new GameObject("Root");

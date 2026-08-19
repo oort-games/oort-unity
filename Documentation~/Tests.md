@@ -36,7 +36,7 @@ Editor tests cover:
 
 Editor tests cover:
 
-- UI and 3D source auto-detection
+- UI, SpriteRenderer-only 2D, and 3D source auto-detection
 - Combined child Renderer bounds
 - Proportional framing padding
 - Resolution limits and 3D view preset validation

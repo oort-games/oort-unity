@@ -52,6 +52,10 @@ namespace OortUnity.Editor
                 {
                     PrepareUI(previewScene, camera, source, safeSettings);
                 }
+                else if (GameObjectBoundsUtility.Is2DObject(source))
+                {
+                    Prepare2D(previewScene, camera, source, safeSettings);
+                }
                 else
                 {
                     Prepare3D(previewScene, camera, source, safeSettings);
@@ -183,6 +187,42 @@ namespace OortUnity.Editor
             FrameCamera(camera, bounds, settings);
         }
 
+        private static void Prepare2D(
+            Scene scene,
+            Camera camera,
+            GameObject source,
+            IconRenderSettings settings
+        )
+        {
+            var stagingObject = new GameObject("Icon Source")
+            {
+                hideFlags = HideFlags.HideAndDontSave,
+                layer = PreviewLayer,
+            };
+            SceneManager.MoveGameObjectToScene(stagingObject, scene);
+            stagingObject.SetActive(false);
+
+            GameObject clone = UnityEngine.Object.Instantiate(source, stagingObject.transform, false);
+            clone.name = source.name;
+            clone.SetActive(true);
+            clone.transform.localPosition = Vector3.zero;
+            clone.transform.localRotation = Quaternion.identity;
+            SetLayerAndHideFlagsRecursively(clone.transform);
+            DisableUserBehaviours(clone);
+            DisableClonedLights(clone);
+
+            stagingObject.SetActive(true);
+
+            if (!GameObjectBoundsUtility.TryGetRendererBounds(clone, out Bounds bounds))
+            {
+                throw new InvalidOperationException(
+                    $"'{source.name}' does not contain an enabled SpriteRenderer."
+                );
+            }
+
+            Frame2DCamera(camera, bounds, settings);
+        }
+
         private static void PrepareUI(
             Scene scene,
             Camera camera,
@@ -270,6 +310,26 @@ namespace OortUnity.Editor
             camera.transform.LookAt(center, Vector3.up);
             camera.nearClipPlane = Mathf.Max(0.01f, cameraDistance - radius * 1.5f);
             camera.farClipPlane = cameraDistance + radius * 3f;
+        }
+
+        private static void Frame2DCamera(
+            Camera camera,
+            Bounds bounds,
+            IconRenderSettings settings
+        )
+        {
+            float framingScale = IconRenderSettings.GetFramingScale(settings.Padding);
+            float radius = Mathf.Max(0.001f, bounds.extents.magnitude);
+            float halfSize = Mathf.Max(bounds.extents.x, bounds.extents.y);
+            float distance = Mathf.Max(1f, bounds.extents.z + radius * 2f);
+            Vector3 center = bounds.center;
+
+            camera.orthographic = true;
+            camera.orthographicSize = Mathf.Max(0.001f, halfSize * framingScale);
+            camera.transform.position = center + Vector3.back * distance;
+            camera.transform.LookAt(center, Vector3.up);
+            camera.nearClipPlane = Mathf.Max(0.01f, distance - radius * 1.5f);
+            camera.farClipPlane = distance + radius * 3f;
         }
 
         private static void CreateDirectionalLight(

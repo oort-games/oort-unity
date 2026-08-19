@@ -1,9 +1,10 @@
 # GameObject Icon Generator Sample
 
-Open `Scenes/GameObjectIconGeneratorSample.unity` and use either of these objects as the source for **Oort > Tools > GameObject Icon Generator**:
+Open `Scenes/GameObjectIconGeneratorSample.unity` and use one of these objects as the source for **Oort > Tools > GameObject Icon Generator**:
 
 - `3D Icon Prefab (Select This)` demonstrates automatic 3D bounds and camera framing. The original prefab is available in `Prefabs/Sample3DIcon.prefab`.
 - `Lit Icon Prefab (Select This)` uses `Prefabs/LitIconSample.prefab` and a URP/Lit material to demonstrate Studio and Scene lighting changes.
+- `2D Sprite (Select This)` demonstrates automatic SpriteRenderer-only 2D detection and standard Unity 2D camera direction.
 - `UI Icon Card (Select This)` demonstrates independent rendering of a UI hierarchy containing an Image, Button, and child Text.
 
 Select a source in the Hierarchy or Project window, click **Use Selection**, adjust the preview, and generate a PNG.

@@ -11,7 +11,7 @@
   "samples": [
     {
       "displayName": "GameObject Icon Generator Sample",
-      "description": "Includes Unlit, URP/Lit, and UI sources for the GameObject Icon Generator.",
+      "description": "Includes Unlit, URP/Lit, 2D Sprite, and UI sources for the GameObject Icon Generator.",
       "path": "Samples~/GameObject Icon Generator Sample"
     }
   ],

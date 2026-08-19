@@ -14,7 +14,7 @@ Oort > Tools > GameObject Icon Generator
 
 - Select a Hierarchy GameObject or Project Prefab
 - Use the current Hierarchy or Project selection
-- Automatically detect UI objects through `RectTransform` and `CanvasRenderer`
+- Automatically detect SpriteRenderer-only 2D objects and UI objects through `RectTransform` and `CanvasRenderer`
 - Preview transparent areas over a checkerboard
 - Choose 64, 128, 256, or 512px output, or enter a custom resolution
 - Use a transparent or solid-color background
@@ -30,7 +30,7 @@ Oort > Tools > GameObject Icon Generator
 
 1. Open **GameObject Icon Generator**.
 2. Assign a GameObject or Prefab, or select one and click **Use Selection**.
-3. Confirm whether the source was detected as **3D** or **UI**.
+3. Confirm whether the source was detected as **3D**, **2D**, or **UI**.
 4. Adjust the live preview and render settings.
 5. Configure the file name and save directory.
 6. Click **Generate PNG Icon**.
@@ -45,7 +45,7 @@ The last output and render settings are stored in `UserSettings/OortUnityUserSet
 
 ### Rendering Notes
 
-3D sources are copied into a temporary Preview Scene and framed from their enabled Renderer bounds. The default view is Front, with Back, Isometric, and Custom rotations available. Studio lighting uses configurable main and fill Directional Lights without shadows. Scene lighting copies enabled Directional, Point, and Spot Lights from the source Scene; Prefab Assets use the active Scene. Point and Spot Light transforms are preserved relative to the source object, while baked lighting, ambient settings, and reflection probes are not copied. UI sources are copied under a temporary Screen Space - Camera Canvas and rendered from their current RectTransform size. Temporary cameras, lights, clones, RenderTextures, and readable textures are cleaned up after each render.
+3D sources are copied into a temporary Preview Scene and framed from their enabled Renderer bounds. The default view is Front, with Back, Isometric, and Custom rotations available. Studio lighting uses configurable main and fill Directional Lights without shadows. Scene lighting copies enabled Directional, Point, and Spot Lights from the source Scene; Prefab Assets use the active Scene. Point and Spot Light transforms are preserved relative to the source object, while baked lighting, ambient settings, and reflection probes are not copied. Sources containing only SpriteRenderer components are detected as 2D and rendered with an orthographic camera from the standard Unity 2D direction; 3D view, projection, and lighting controls are disabled. UI sources are copied under a temporary Screen Space - Camera Canvas and rendered from their current RectTransform size. Temporary cameras, lights, clones, RenderTextures, and readable textures are cleaned up after each render.
 
 The source hierarchy is rendered independently. Parent `Mask`, `CanvasGroup`, or `LayoutGroup` effects that are not part of the selected hierarchy can therefore look different. Particle systems, trails, and animations are captured in their current static state. URP rendering has been verified; HDRP-specific output has not been validated.
 
@@ -57,7 +57,7 @@ Import **GameObject Icon Generator Sample** from Package Manager and open:
 Scenes/GameObjectIconGeneratorSample.unity
 ```
 
-The scene contains Unlit and URP/Lit 3D Prefab sources, a Directional Light for Scene lighting, and a UI Image/Button/Text source.
+The scene contains Unlit and URP/Lit 3D Prefab sources, a SpriteRenderer-only 2D source, a Directional Light for Scene lighting, and a UI Image/Button/Text source.
 
 ---
 

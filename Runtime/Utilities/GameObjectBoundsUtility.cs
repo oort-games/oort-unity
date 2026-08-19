@@ -21,6 +21,39 @@ namespace OortUnity.Utilities
                 && source.GetComponentInChildren<CanvasRenderer>(true) != null;
         }
 
+        /// <summary>
+        /// GameObject의 활성 Renderer 계층이 모두 SpriteRenderer로 구성되어 있는지 확인합니다.
+        /// </summary>
+        /// <param name="source">확인할 GameObject입니다.</param>
+        /// <returns>하나 이상의 활성 SpriteRenderer만 포함하면 true, 다른 Renderer가 포함되면 false를 반환합니다.</returns>
+        public static bool Is2DObject(GameObject source)
+        {
+            if (source == null || IsUIObject(source))
+            {
+                return false;
+            }
+
+            Renderer[] renderers = source.GetComponentsInChildren<Renderer>(true);
+            bool hasSpriteRenderer = false;
+
+            foreach (Renderer renderer in renderers)
+            {
+                if (renderer == null)
+                {
+                    continue;
+                }
+
+                if (renderer is not SpriteRenderer)
+                {
+                    return false;
+                }
+
+                hasSpriteRenderer |= renderer.enabled;
+            }
+
+            return hasSpriteRenderer;
+        }
+
         #endregion
 
         #region Bounds
