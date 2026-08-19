@@ -34,7 +34,7 @@ Append a Git tag after `#` to install a specific release.
 https://github.com/oort-games/oort-unity.git#v0.0.4
 ```
 
-Replace `v0.0.1` with the version you want to install.
+Replace `v0.0.4` with the version you want to install.
 
 ### Install through manifest.json
 
